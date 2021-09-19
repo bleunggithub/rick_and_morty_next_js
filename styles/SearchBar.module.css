@@ -1,0 +1,13 @@
+.searchBarRoot {
+	display: flex;
+	justify-content: center;
+	height: 4rem;
+	padding: 1rem;
+}
+
+.searchInput {
+	width: 25%;
+	border: 1px solid #d3d3d3;
+	border-radius: 2px;
+	padding: 0 10px;
+}

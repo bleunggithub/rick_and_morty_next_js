@@ -1,0 +1,18 @@
+.episodeInfoCardRoot {
+	width: 22%;
+	margin: 1rem;
+	min-height: 25vh;
+	border: 1px solid #d3d3d3;
+	border-radius: 2px;
+	padding: 1rem;
+	position: relative;
+}
+
+.episodeIdText {
+	font-size: 4rem;
+	z-index: -1;
+	position: absolute;
+	right: 2rem;
+	bottom: 1rem;
+	color: #d3d3d3;
+}
