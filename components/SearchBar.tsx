@@ -6,7 +6,7 @@ const SearchBar = () => {
       <input
         className={styles.searchInput} 
         placeholder="Enter an episode ID"
-        type="text"
+        type="search"
       /> 
     </div>
   )

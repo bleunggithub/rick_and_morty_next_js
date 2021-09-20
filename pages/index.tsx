@@ -1,32 +1,53 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
+import { useState } from 'react'
+import { GetStaticProps } from 'next'
+import styles from '../styles/Home.module.css'
+import MetaData from '../components/MetaData'
 import SearchBar from '../components/SearchBar'
 import EpisodeInfoCardList from '../components/EpisodeInfoCardList'
 
+import { Episode, Episodes, EpisodesDetails } from '../interface'
+import { initializeApollo } from '../lib/apolloClient'
+import { GET_ALL_EPISODES } from '../GraphQL/Queries'
 
-export default function Home() {
-  const tempArr = [0,1,2,3,4]
-  
+interface HomeProps {
+  episodes: Episodes
+}
+
+
+export default function Home({episodes}:HomeProps) {
+  const [episodeDetails, setEpisodeDetails] = useState<Episode[]>(episodes.results)
+
   return (
     <div className={styles.homeRoot}>
-      <Head>
-        <title>Rick and Morty</title>
-        <meta name="description" content="Next.js app that displays the details of each Rick and Morty Episode with implementation of Apollo Client and GraphQL" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaData />
 
       <main className={styles.fullScreenContainer}>
         <h1>Rick and Morty</h1>
         <SearchBar />
         <div className={styles.cardsContainer}>
-          <EpisodeInfoCardList episodeInfo={tempArr} />
+          <EpisodeInfoCardList episodeInfo={episodeDetails} />
         </div>
       </main>
-
-      {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
-
     </div>
   )
+}
+
+
+export const getStaticProps: GetStaticProps = async() =>{
+
+  const apolloClient = initializeApollo()
+
+  const {data: { episodes }} = await apolloClient.query<EpisodesDetails>({
+    query: GET_ALL_EPISODES,
+    variables: {
+      page: 1
+    }
+  })
+
+  return {
+    props:{
+      episodes
+    }
+  }
 }

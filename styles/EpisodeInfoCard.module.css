@@ -8,6 +8,14 @@
 	position: relative;
 }
 
+.titleText {
+	font-weight: 600;
+}
+
+.detailText {
+	color: #636363;
+}
+
 .episodeIdText {
 	font-size: 4rem;
 	z-index: -1;
