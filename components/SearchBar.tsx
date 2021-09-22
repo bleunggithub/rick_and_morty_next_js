@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GET_EPISODE_BY_ID } from '../GraphQL/Queries'
-import { Episode } from '../interface'
+import { Episode, EpisodeDetails } from '../interface'
 import styles from '../styles/SearchBar.module.scss'
 import EpisodeInfoCardList from './EpisodeInfoCardList'
 
@@ -14,13 +14,9 @@ const SearchBar = () => {
     setSearchInput(e.target.value)
   }
 
-  const [searchById, {loading}] = useLazyQuery(GET_EPISODE_BY_ID, {
-    fetchPolicy: "cache-and-network",
+  const [searchById, {loading, data: episodeDetails}] = useLazyQuery<EpisodeDetails>(GET_EPISODE_BY_ID, {
+    fetchPolicy: "cache-first",
     nextFetchPolicy: "cache-first",
-    onCompleted: data => {
-      setError(null)
-      setSearchResults([data.episode])
-    }, 
     onError: err => {
       setSearchResults(null)
       setError(err.message)
@@ -38,6 +34,10 @@ const SearchBar = () => {
 
     setSearchInput("")
   }
+
+  useEffect(()=>{
+    episodeDetails?.episode && (setSearchResults([episodeDetails?.episode]))
+  }, [episodeDetails])
 
   return (
     <>
