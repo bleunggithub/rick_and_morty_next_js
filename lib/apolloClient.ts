@@ -5,7 +5,6 @@ import {
 	InMemoryCache,
 	NormalizedCacheObject,
 } from "@apollo/client"
-import { relayStylePagination } from "@apollo/client/utilities"
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
@@ -15,15 +14,7 @@ const createApolloClient = () => {
 		link: new HttpLink({
 			uri: process.env.NEXT_PUBLIC_API_URI,
 		}),
-		cache: new InMemoryCache({
-			typePolicies: {
-				Query: {
-					fields: {
-						episodes: relayStylePagination(),
-					},
-				},
-			},
-		}),
+		cache: new InMemoryCache(),
 	})
 }
 
@@ -37,10 +28,8 @@ export const initializeApollo = (
 		_apolloClient.cache.restore({ ...existingCache, ...initialState })
 	}
 
-	// For SSG and SSR always create a new Apollo Client
 	if (typeof window === "undefined") return _apolloClient
 
-	// Create the Apollo Client once in the client
 	if (!apolloClient) apolloClient = _apolloClient
 	return _apolloClient
 }

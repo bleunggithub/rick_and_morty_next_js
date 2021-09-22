@@ -9,7 +9,7 @@ export interface EpisodeDetails {
 export interface Episodes {
 	info: {
 		count: number
-		next: string | null
+		next: number | null
 		pages: number
 		prev: number | null
 	}
