@@ -7,6 +7,7 @@
 
 - Clone the repo
 - Type `cd rick-and-morty-api` to change into the directory and run `yarn` to install the dependencies
+- Copy the text in the `.env.example` file, create a file named `.env.local` and paste the copied text
 - To start, run `yarn dev` to start the app in development mode
 - Open [http://localhost:3000](http://localhost:3000) with your browser
 
