@@ -1,5 +1,3 @@
-import { useQuery } from '@apollo/client'
-import { GET_ALL_EPISODES } from '../GraphQL/Queries'
 import { Episode } from '../interface'
 import EpisodeInfoCard from './EpisodeInfoCard'
 

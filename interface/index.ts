@@ -3,7 +3,7 @@ export interface EpisodesDetails {
 }
 
 export interface EpisodeDetails {
-	episode: Episodes
+	episode: Episode
 }
 
 export interface Episodes {
