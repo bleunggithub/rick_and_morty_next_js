@@ -1,7 +1,7 @@
 ## Table of Content
 
-[Installation](#installation)
-[Takeaway](#takeaway)
+- [Installation](#installation)
+- [Takeaway](#takeaway)
 
 ## Installation
 
