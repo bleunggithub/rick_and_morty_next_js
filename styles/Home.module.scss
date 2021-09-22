@@ -6,11 +6,11 @@
 .fullScreenContainer {
 	width: 100%;
 	min-height: 100vh;
-}
 
-.fullScreenContainer > h1 {
-	text-align: center;
-	letter-spacing: 3px;
+	& > h1 {
+		text-align: center;
+		letter-spacing: 3px;
+	}
 }
 
 .cardsContainer {

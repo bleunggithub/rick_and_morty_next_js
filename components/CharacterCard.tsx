@@ -1,5 +1,5 @@
 import { Character } from '../interface'
-import styles from '../styles/CharacterCard.module.css'
+import styles from '../styles/CharacterCard.module.scss'
 
 interface CharacterCardProps {
   character: Character

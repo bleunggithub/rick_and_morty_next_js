@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import { GetStaticProps } from 'next'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import MetaData from '../components/MetaData'
 import SearchBar from '../components/SearchBar'
 import EpisodeInfoCardList from '../components/EpisodeInfoCardList'
@@ -14,18 +14,17 @@ interface HomeProps {
   episodes: Episodes
 }
 
-
 export default function Home({episodes}:HomeProps) {
   const [episodeDetails, setEpisodeDetails] = useState<Episode[]>(episodes.results)
 
   return (
     <div className={styles.homeRoot}>
       <MetaData />
-
       <main className={styles.fullScreenContainer}>
         <h1>Rick and Morty</h1>
         <SearchBar />
         <div className={styles.cardsContainer}>
+          <h3>Episodes</h3>
           <EpisodeInfoCardList episodeInfo={episodeDetails} />
         </div>
       </main>

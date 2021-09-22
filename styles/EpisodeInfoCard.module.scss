@@ -1,11 +1,15 @@
 .episodeInfoCardRoot {
-	width: 22%;
+	width: 100%;
 	margin: 1rem;
-	min-height: 25vh;
+	min-height: 10vh;
 	border: 1px solid #d3d3d3;
 	border-radius: 2px;
 	padding: 1rem;
 	position: relative;
+	display: flex;
+	> div {
+		width: 25%;
+	}
 }
 
 .titleText {
