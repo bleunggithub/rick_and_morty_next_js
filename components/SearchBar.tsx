@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 import { GET_EPISODE_BY_ID } from '../GraphQL/Queries'
 import { Episode, EpisodeDetails } from '../interface'
 import styles from '../styles/SearchBar.module.scss'
-import EpisodeInfoCardList from './EpisodeInfoCardList'
+import EpisodeInfoCard from './EpisodeInfoCard'
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState<string>("")
   const [error, setError] = useState<string | null>(null)
-  const [searchResults, setSearchResults] = useState<null | Episode[]>(null)
+  const [searchResults, setSearchResults] = useState<null | Episode>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)
@@ -36,7 +36,7 @@ const SearchBar = () => {
   }
 
   useEffect(()=>{
-    episodeDetails?.episode && (setSearchResults([episodeDetails?.episode]))
+    episodeDetails?.episode && (setSearchResults(episodeDetails.episode))
   }, [episodeDetails])
 
   return (
@@ -58,7 +58,7 @@ const SearchBar = () => {
     {searchResults && (
       <div className={styles.searchResultsRoot}>
         <h3>Search Results</h3>
-        <EpisodeInfoCardList episodeInfo={searchResults} />
+        <EpisodeInfoCard episode={searchResults} />
       </div>
     )}
     </>
