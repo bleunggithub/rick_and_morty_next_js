@@ -1,6 +1,6 @@
 
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { GET_CHARACTER_DETAILS_BY_EPISODES, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
+import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
 import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface'
 import { initializeApollo } from '../../lib/apolloClient'
 import styles from '../../styles/EpisodeWithCharacterDetails.module.scss'
@@ -72,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = async() => {
   const apolloClient = initializeApollo()
 
   const {data: { episodes }} = await apolloClient.query<EpisodesDetails>({
-    query: GET_CHARACTER_DETAILS_BY_EPISODES,
+    query: GET_EPISODES_WITH_CHARACTER_DETAILS,
     variables: {
       page: 1 
     }

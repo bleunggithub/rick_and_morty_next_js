@@ -58,7 +58,7 @@ export const GET_CHARACTER_DETAILS_BY_EPISODE_ID = gql`
 	}
 `
 
-export const GET_CHARACTER_DETAILS_BY_EPISODES = gql`
+export const GET_EPISODES_WITH_CHARACTER_DETAILS = gql`
 	query allEpisodes($page: Int) {
 		episodes(page: $page) {
 			results {
