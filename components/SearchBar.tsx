@@ -15,6 +15,8 @@ const SearchBar = () => {
   }
 
   const [searchById, {loading}] = useLazyQuery(GET_EPISODE_BY_ID, {
+    fetchPolicy: "cache-and-network",
+    nextFetchPolicy: "cache-first",
     onCompleted: data => {
       setError(null)
       setSearchResults([data.episode])
