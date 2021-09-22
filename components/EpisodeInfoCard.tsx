@@ -27,7 +27,12 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
       <div>
         <p className={styles.titleText}>Characters</p>
-        {episode.characters.slice(0,3).map((ch)=><p className={styles.detailText} key={ch.id}>{ch.name}</p>)}
+        {episode.characters.slice(0,3).map((ch)=>(
+          <p className={styles.detailText} key={ch.id}>{ch.name}</p>
+        ))}
+        {episode.characters.length > 3 && (
+          <small>and more</small>
+        )}
       </div>
 
       <div>
