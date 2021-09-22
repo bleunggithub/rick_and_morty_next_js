@@ -20,23 +20,36 @@ export default function Home({episodes}:HomeProps) {
   const [nextPage, setNextPage] = useState<number | null>(episodes.info.next)
   const [error, setError] = useState<null | string>(null)
 
-  const [loadmore, {loading}] = useLazyQuery<EpisodesDetails>(GET_ALL_EPISODES,{
-    onCompleted: data => {
-      setError(null)
-      setNextPage(data.episodes.info.next)
-      setEpisodeDetails(cur => [...cur, ...data.episodes.results])
-    },
+  const [loadmore, {loading, fetchMore}] = useLazyQuery<EpisodesDetails>(GET_ALL_EPISODES,{
+    onCompleted: data => updateEpisodeDetails(data),
     onError: err => {
       setError(err.message)
     }
   })
 
   const handleLoadMore = () => {
-    loadmore({
-      variables: {
-        page: nextPage
-      }
-    })
+    if(!fetchMore){
+      loadmore({
+        variables: {
+          page: nextPage
+        }
+      })
+    } else {
+      fetchMore({
+        variables: {
+          page: nextPage
+        }
+      }).then(res => {
+        const {data} = res
+        updateEpisodeDetails(data)
+      }).catch(err => setError(err.message))
+    }
+  }
+
+  const updateEpisodeDetails = (data:EpisodesDetails) => {
+    setError(null)
+    setNextPage(data.episodes.info.next)
+    setEpisodeDetails(cur => [...cur, ...data.episodes.results])
   }
 
 
