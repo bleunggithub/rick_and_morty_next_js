@@ -1,4 +1,5 @@
 ## Table of Content
+deployed on Vercel - [https://rick-and-morty-next-js-phi.vercel.app/](https://rick-and-morty-next-js-phi.vercel.app/)
 
 - [Installation](#installation)
 - [Takeaway](#takeaway)
