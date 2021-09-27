@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client'
 import { useEffect, useState } from 'react'
 import { GET_EPISODE_BY_ID } from '../GraphQL/Queries'
-import { Episode, EpisodeDetails } from '../interface'
+import { Episode, EpisodesByIdsDetails } from '../interface'
 import styles from '../styles/SearchBar.module.scss'
 import EpisodeInfoCard from './EpisodeInfoCard'
 
@@ -14,7 +14,7 @@ const SearchBar = () => {
     setSearchInput(e.target.value)
   }
 
-  const [searchById, {loading, data: episodeDetails}] = useLazyQuery<EpisodeDetails>(GET_EPISODE_BY_ID, {
+  const [searchById, {loading, data: episodeDetails}] = useLazyQuery<EpisodesByIdsDetails>(GET_EPISODE_BY_ID, {
     fetchPolicy: "cache-first",
     nextFetchPolicy: "cache-first",
     onError: err => {
@@ -25,10 +25,10 @@ const SearchBar = () => {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
+    setError(null)
     searchById({
       variables: {
-        id: searchInput
+        ids: [searchInput]
       },
     })
 
@@ -36,7 +36,7 @@ const SearchBar = () => {
   }
 
   useEffect(()=>{
-    episodeDetails?.episode && (setSearchResults(episodeDetails.episode))
+    episodeDetails?.episodesByIds.length && (setSearchResults(episodeDetails.episodesByIds[0]))
   }, [episodeDetails])
 
   return (
