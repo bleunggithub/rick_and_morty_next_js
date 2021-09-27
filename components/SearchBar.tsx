@@ -25,13 +25,12 @@ const SearchBar = () => {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
+    setError(null)
     searchById({
       variables: {
         id: searchInput
       },
     })
-
     setSearchInput("")
   }
 
