@@ -24,8 +24,8 @@ export const GET_ALL_EPISODES = gql`
 `
 
 export const GET_EPISODE_BY_ID = gql`
-	query getEpisodeById($id: ID!) {
-		episode(id: $id) {
+	query getEpisodeById($ids: [ID!]!) {
+		episodesByIds(ids: $ids) {
 			id
 			name
 			air_date
