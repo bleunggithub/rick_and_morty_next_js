@@ -1,15 +1,29 @@
+@import "vars.module.scss";
+
 .homeRoot {
 	width: 100%;
-	padding: 1rem 2rem;
 }
 
 .fullScreenContainer {
 	width: 100%;
 	min-height: 100vh;
-
-	& > h1 {
-		text-align: center;
-		letter-spacing: 3px;
+	display: flex;
+	flex-wrap: nowrap;
+	> section {
+		width: calc(100% / 3);
+		display: flex;
+		padding: 2rem;
+		font-size: 4rem;
+		align-items: center;
+	}
+	& section:first-child {
+		background-color: #a7cb54;
+	}
+	& section:nth-child(2) {
+		background-color: #5cad4a;
+	}
+	& section:last-child {
+		background-color: #208d45;
 	}
 }
 
@@ -24,5 +38,16 @@
 		width: 100%;
 		text-align: center;
 		margin-top: 1rem;
+	}
+}
+
+@media (max-width: $bp-md) {
+	.fullScreenContainer {
+		flex-wrap: wrap;
+		flex-direction: column;
+		> section {
+			width: 100%;
+			height: calc(100vh / 3);
+		}
 	}
 }

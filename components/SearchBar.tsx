@@ -5,6 +5,7 @@ import { Episode, EpisodesByIdsDetails } from '../interface'
 import styles from '../styles/SearchBar.module.scss'
 import EpisodeInfoCard from './EpisodeInfoCard'
 
+
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState<string>("")
   const [error, setError] = useState<string | null>(null)
@@ -41,18 +42,18 @@ const SearchBar = () => {
 
   return (
     <>
-    <div className={styles.searchBarRoot}>
-      <form className={styles.searchBarForm} onSubmit={handleSearch}>
-        <input
-          placeholder="Enter an episode ID"
-          type="search"
-          name="searchInput"
-          value={searchInput}
-          onChange={handleInputChange}
-        /> 
-        <button>Search</button>
-      </form>
-    </div>
+      <div className={styles.searchBarRoot}>
+        <form className={styles.searchBarForm} onSubmit={handleSearch}>
+          <input
+            placeholder="Search by episode ID"
+            type="search"
+            name="searchInput"
+            value={searchInput}
+            onChange={handleInputChange}
+          /> 
+          <button>Search</button>
+        </form>
+      </div>
     {loading && (<p className={styles.statusText}>Loading search results...</p>)}
     {error && (<p className={styles.statusText}>An error has occurred: {error}</p>)}
     {searchResults && (

@@ -1,8 +1,6 @@
-
 import { useState } from 'react'
 import { GetStaticProps } from 'next'
 import styles from '../styles/Home.module.scss'
-import MetaData from '../components/MetaData'
 import SearchBar from '../components/SearchBar'
 import EpisodeInfoCardList from '../components/EpisodeInfoCardList'
 
@@ -11,9 +9,11 @@ import { initializeApollo } from '../lib/apolloClient'
 import { GET_ALL_EPISODES } from '../GraphQL/Queries'
 import { useLazyQuery } from '@apollo/client'
 
+
 interface HomeProps {
   episodes: Episodes
 }
+
 
 export default function Home({episodes}:HomeProps) {
   const [episodeDetails, setEpisodeDetails] = useState<Episode[]>(episodes.results)
@@ -54,11 +54,13 @@ export default function Home({episodes}:HomeProps) {
 
 
   return (
+    <>
     <div className={styles.homeRoot}>
-      <MetaData />
       <main className={styles.fullScreenContainer}>
-        <h1>Rick and Morty</h1>
-        <SearchBar />
+        <section>Episodes</section>
+        <section>Characters</section>
+        <section>Locations</section>
+        {/* <SearchBar />
         <div className={styles.cardsContainer}>
           <h3>Episodes</h3>
           <EpisodeInfoCardList episodeInfo={episodeDetails} />
@@ -69,9 +71,10 @@ export default function Home({episodes}:HomeProps) {
           )}
           {loading && (<p>Loading...</p>)}
           {error && (<p>An error has occurred: {error}</p>)}
-        </div>
+        </div> */}
       </main>
     </div>
+    </>
   )
 }
 
@@ -84,7 +87,7 @@ export const getStaticProps: GetStaticProps = async() =>{
     query: GET_ALL_EPISODES,
     variables: {
       page: 1
-    }
+    },
   })
 
   return {

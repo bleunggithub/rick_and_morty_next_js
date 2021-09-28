@@ -1,0 +1,17 @@
+.navbarRoot {
+	height: 80px;
+	width: 100%;
+	padding: 1rem;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	position: fixed;
+	transition: all 0.5s;
+	> h1 {
+		margin-left: 1rem;
+		text-transform: uppercase;
+	}
+	img {
+		cursor: pointer !important;
+	}
+}
