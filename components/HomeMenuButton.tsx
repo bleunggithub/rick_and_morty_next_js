@@ -14,7 +14,7 @@ const HomeMenuButton = ({routeName, selected, handleClickLink, offset = '0'}:Hom
     <motion.section 
       {...selected && {
         exit: {
-          scaleX: 5, 
+          scale: 5, 
           x: offset, 
           transition: { 
             duration: 1.5 

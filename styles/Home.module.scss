@@ -16,7 +16,7 @@
 		padding: 2rem;
 		align-items: center;
 		> a {
-			font-size: 4rem;
+			font-size: 3.5rem;
 			text-transform: uppercase;
 			&:hover {
 				transition: all 0.5s;
@@ -50,15 +50,15 @@
 	}
 }
 
-@media (max-width: $bp-md) {
+@media (max-width: $bp-xl){
 	.fullScreenContainer {
 		flex-wrap: wrap;
 		flex-direction: column;
 		> section {
 			width: 100%;
 			height: calc(100vh / 3);
-			> span {
-				font-size: 3rem;
+			> a {
+				font-size: 2rem;
 			}
 		}
 	}
