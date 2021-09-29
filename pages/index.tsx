@@ -3,19 +3,19 @@ import { GetStaticProps } from 'next'
 import styles from '../styles/Home.module.scss'
 import SearchBar from '../components/SearchBar'
 import EpisodeInfoCardList from '../components/EpisodeInfoCardList'
-
+import Home from '../components/Home'
 import { Episode, Episodes, EpisodesDetails } from '../interface'
 import { initializeApollo } from '../lib/apolloClient'
 import { GET_ALL_EPISODES } from '../GraphQL/Queries'
 import { useLazyQuery } from '@apollo/client'
 
 
-interface HomeProps {
+interface IndexProps {
   episodes: Episodes
 }
 
 
-export default function Home({episodes}:HomeProps) {
+export default function Index({episodes}: IndexProps) {
   const [episodeDetails, setEpisodeDetails] = useState<Episode[]>(episodes.results)
   const [nextPage, setNextPage] = useState<number | null>(episodes.info.next)
   const [error, setError] = useState<null | string>(null)
@@ -57,9 +57,7 @@ export default function Home({episodes}:HomeProps) {
     <>
     <div className={styles.homeRoot}>
       <main className={styles.fullScreenContainer}>
-        <section>Episodes</section>
-        <section>Characters</section>
-        <section>Locations</section>
+        <Home />
         {/* <SearchBar />
         <div className={styles.cardsContainer}>
           <h3>Episodes</h3>

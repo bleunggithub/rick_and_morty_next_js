@@ -6,7 +6,7 @@ import { ApolloProvider } from "@apollo/client";
 import { useApollo } from '../lib/apolloClient';
 import { AnimatePresence } from 'framer-motion';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
   
   return (
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         initial={false} 
         onExitComplete={()=>window.scrollTo(0,0)}
       >
-        <Component {...pageProps} />
+        <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </ApolloProvider>
     </>

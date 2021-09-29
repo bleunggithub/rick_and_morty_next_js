@@ -35,3 +35,5 @@ export interface Character {
 	gender?: string
 	image?: string
 }
+
+export type Routes = "episodes" | "characters" | "locations"

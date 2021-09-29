@@ -5,6 +5,7 @@
 }
 
 .fullScreenContainer {
+	overflow: hidden;
 	width: 100%;
 	min-height: 100vh;
 	display: flex;
@@ -13,17 +14,25 @@
 		width: calc(100% / 3);
 		display: flex;
 		padding: 2rem;
-		font-size: 4rem;
 		align-items: center;
+		> a {
+			font-size: 4rem;
+			text-transform: uppercase;
+			&:hover {
+				transition: all 0.5s;
+				text-shadow: 0 0 3px rgba(255, 255, 255, 0.5),
+					0 0 6px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+			}
+		}
 	}
 	& section:first-child {
-		background-color: #a7cb54;
+		background-color: $bg-light;
 	}
 	& section:nth-child(2) {
-		background-color: #5cad4a;
+		background-color: $bg-medium;
 	}
 	& section:last-child {
-		background-color: #208d45;
+		background-color: $bg-dark;
 	}
 }
 
@@ -48,6 +57,9 @@
 		> section {
 			width: 100%;
 			height: calc(100vh / 3);
+			> span {
+				font-size: 3rem;
+			}
 		}
 	}
 }

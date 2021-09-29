@@ -37,7 +37,7 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
       <div>
         <span className={styles.episodeIdText}>{episode.id}</span>
-        <Link href={`/episode/${episode.id}`}>... see more</Link>
+        <Link href={`/episodes/${episode.id}`}>... see more</Link>
       </div>
     </div>
   )

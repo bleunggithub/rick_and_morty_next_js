@@ -1,4 +1,13 @@
-.episodePageRoot {
+@import "vars.module.scss";
+
+.episodesHomeRoot {
+	padding: 5rem;
+	width: 100%;
+	min-height: 100vh;
+	background-color: $bg-light;
+}
+
+.episodeIdPageRoot {
 	width: 100%;
 	display: flex;
 	flex-direction: column;

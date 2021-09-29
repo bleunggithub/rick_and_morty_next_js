@@ -1,14 +1,14 @@
-import {useEffect, useRef} from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import styles from '../styles/Navbar.module.scss'
+import Image from 'next/image'
 import appIcon from '../public/app-icon.png'
+import { useRef, useEffect } from 'react'
+import Link from 'next/dist/client/link'
 
 const Navbar = () => {
-  const navbar = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && navbar.current) {
+    if (typeof window !== 'undefined' && ref.current) {
       let prevScrollPos = window.pageYOffset
 
       window.onscroll = () => {
@@ -19,9 +19,9 @@ const Navbar = () => {
           (maxScroll <= 0 && prevScrollPos > currentScrollPos) ||
           (prevScrollPos <= 50 && currentScrollPos <= 50)
         ) {
-          navbar.current!.style.top = '0'
+          ref.current!.style.top = '0'
         } else {
-          navbar.current!.style.top = '-150px'
+          ref.current!.style.top = '-150px'
         }
         prevScrollPos = currentScrollPos
       }
@@ -29,11 +29,11 @@ const Navbar = () => {
   },[])
 
   return (
-    <div className={styles.navbarRoot} ref={navbar}>
-        <Link href="/">
-          <Image src={appIcon} width={50} height={50} />
-        </Link>
+    <div className={styles.navbarRoot} ref={ref}>
+      <Image src={appIcon} width={50} height={50} />
+      <Link href="/">
         <h1>Rick and Morty</h1>
+      </Link>
     </div>
   )
 }

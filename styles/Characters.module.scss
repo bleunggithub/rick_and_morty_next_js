@@ -1,0 +1,16 @@
+@import "vars.module.scss";
+
+.charactersHomeRoot {
+	padding: 5rem;
+	width: 100%;
+	min-height: 100vh;
+	background-color: $bg-medium;
+}
+
+.characterIdPageRoot {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem;
+}
