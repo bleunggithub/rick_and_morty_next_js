@@ -1,17 +1,29 @@
 @import "vars.module.scss";
 
+
 .episodesHomeRoot {
-	padding: 5rem;
-	width: 100%;
-	min-height: 100vh;
+	@include fullscreen-container;
+	overflow: auto;
+	padding: 0 $app-side-padding;
 	background-color: $bg-light;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.episodeIdPageRoot {
+.searchContainer {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
+	margin-top: $navbar-margin;
+}
+
+.episodeDetailsContainer {
+	width: 100%;
+}
+
+//!
+.episodeIdPageRoot {
+	@include vertical-flex;
 	justify-content: center;
+	width: 100%;
 	padding: 2rem;
 }
 
@@ -25,4 +37,18 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	row-gap: 1rem;
+}
+
+@media (min-width: $bp-lg){
+	.episodesHomeRoot {
+		@include horizontal-flex;
+	}
+	.searchContainer {
+		width: 30%;
+		padding-top: 3rem;
+	}
+	.episodeDetailsContainer {
+		margin-top: $navbar-margin;
+		width: 70%;
+	}
 }

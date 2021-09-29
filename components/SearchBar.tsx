@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client'
 import { useEffect, useState } from 'react'
-import { GET_EPISODE_BY_ID } from '../GraphQL/Queries'
-import { Episode, EpisodesByIdsDetails } from '../interface'
+import { SEARCH_EPISODES_BY_NAME } from '../GraphQL/Queries'
+import { Episode, EpisodesDetails } from '../interface'
 import styles from '../styles/SearchBar.module.scss'
 import EpisodeInfoCard from './EpisodeInfoCard'
 
@@ -15,7 +15,7 @@ const SearchBar = () => {
     setSearchInput(e.target.value)
   }
 
-  const [searchById, {loading, data: episodeDetails}] = useLazyQuery<EpisodesByIdsDetails>(GET_EPISODE_BY_ID, {
+  const [searchById, {loading, data: episodeDetails}] = useLazyQuery<EpisodesDetails>(SEARCH_EPISODES_BY_NAME, {
     fetchPolicy: "cache-first",
     nextFetchPolicy: "cache-first",
     onError: err => {
@@ -29,7 +29,10 @@ const SearchBar = () => {
     setError(null)
     searchById({
       variables: {
-        ids: [searchInput]
+        page: 1,
+        filter: {
+          name: searchInput
+        }
       },
     })
 
@@ -37,7 +40,8 @@ const SearchBar = () => {
   }
 
   useEffect(()=>{
-    episodeDetails?.episodesByIds.length && (setSearchResults(episodeDetails.episodesByIds[0]))
+    console.log(episodeDetails)
+    // episodeDetails?.episodesByIds.length && (setSearchResults(episodeDetails.episodesByIds[0]))
   }, [episodeDetails])
 
   return (
@@ -45,7 +49,7 @@ const SearchBar = () => {
       <div className={styles.searchBarRoot}>
         <form className={styles.searchBarForm} onSubmit={handleSearch}>
           <input
-            placeholder="Search by episode ID"
+            placeholder="Search by episode name"
             type="search"
             name="searchInput"
             value={searchInput}
@@ -54,14 +58,14 @@ const SearchBar = () => {
           <button>Search</button>
         </form>
       </div>
-    {loading && (<p className={styles.statusText}>Loading search results...</p>)}
+    {/* {loading && (<p className={styles.statusText}>Loading search results...</p>)}
     {error && (<p className={styles.statusText}>An error has occurred: {error}</p>)}
     {searchResults && (
       <div className={styles.searchResultsRoot}>
         <h3>Search Results</h3>
         <EpisodeInfoCard episode={searchResults} />
       </div>
-    )}
+    )} */}
     </>
   )
 }

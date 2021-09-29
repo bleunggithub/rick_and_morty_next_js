@@ -1,96 +1,41 @@
-import { useState } from 'react'
-import { GetStaticProps } from 'next'
+import { useRouter } from 'next/dist/client/router'
 import styles from '../styles/Home.module.scss'
-import SearchBar from '../components/SearchBar'
-import EpisodeInfoCardList from '../components/EpisodeInfoCardList'
-import Home from '../components/Home'
-import { Episode, Episodes, EpisodesDetails } from '../interface'
-import { initializeApollo } from '../lib/apolloClient'
-import { GET_ALL_EPISODES } from '../GraphQL/Queries'
-import { useLazyQuery } from '@apollo/client'
+import { useState } from 'react'
+import { Routes } from '../interface'
+import HomeMenuOption from '../components/HomeMenuOption'
 
+export default function Index() {
+  const [selectedRoute, setSelectedRoute] = useState<null | Routes>(null)
 
-interface IndexProps {
-  episodes: Episodes
-}
+  const router = useRouter()
 
-
-export default function Index({episodes}: IndexProps) {
-  const [episodeDetails, setEpisodeDetails] = useState<Episode[]>(episodes.results)
-  const [nextPage, setNextPage] = useState<number | null>(episodes.info.next)
-  const [error, setError] = useState<null | string>(null)
-
-  const [loadmore, {loading, fetchMore}] = useLazyQuery<EpisodesDetails>(GET_ALL_EPISODES,{
-    onCompleted: data => updateEpisodeDetails(data),
-    onError: err => {
-      setError(err.message)
-    }
-  })
-
-  const handleLoadMore = () => {
-    if(!fetchMore){
-      loadmore({
-        variables: {
-          page: nextPage
-        }
-      })
-    } else {
-      fetchMore({
-        variables: {
-          page: nextPage
-        }
-      }).then(res => {
-        const {data} = res
-        updateEpisodeDetails(data)
-      }).catch(err => setError(err.message))
-    }
+  const handleClickLink = (e: React.MouseEvent<HTMLAnchorElement>, selected: Routes) => {
+    e.preventDefault()
+    setSelectedRoute(selected)
+    router.push(selected)
   }
-
-  const updateEpisodeDetails = (data:EpisodesDetails) => {
-    setError(null)
-    setNextPage(data.episodes.info.next)
-    setEpisodeDetails(cur => [...cur, ...data.episodes.results])
-  }
-
 
   return (
-    <>
     <div className={styles.homeRoot}>
-      <main className={styles.fullScreenContainer}>
-        <Home />
-        {/* <SearchBar />
-        <div className={styles.cardsContainer}>
-          <h3>Episodes</h3>
-          <EpisodeInfoCardList episodeInfo={episodeDetails} />
-          {nextPage ? (
-            <button onClick={handleLoadMore}>Load more</button>
-          ):(
-            <p>This is the end of the List :&#40;</p>
-          )}
-          {loading && (<p>Loading...</p>)}
-          {error && (<p>An error has occurred: {error}</p>)}
-        </div> */}
+      <main className={styles.homeContainer}>
+        <HomeMenuOption 
+          routeName='episodes' 
+          selected={selectedRoute === 'episodes'}
+          handleClickLink={handleClickLink}
+          offset='50vw'
+        />
+        <HomeMenuOption 
+          routeName='characters' 
+          selected={selectedRoute === 'characters'}
+          handleClickLink={handleClickLink}
+        />
+        <HomeMenuOption 
+          routeName='locations' 
+          selected={selectedRoute === 'locations'}
+          handleClickLink={handleClickLink}
+          offset='-50vw'
+        />
       </main>
     </div>
-    </>
   )
-}
-
-
-export const getStaticProps: GetStaticProps = async() =>{
-
-  const apolloClient = initializeApollo()
-
-  const {data: { episodes }} = await apolloClient.query<EpisodesDetails>({
-    query: GET_ALL_EPISODES,
-    variables: {
-      page: 1
-    },
-  })
-
-  return {
-    props:{
-      episodes
-    }
-  }
 }

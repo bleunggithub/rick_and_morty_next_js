@@ -5,9 +5,9 @@ export interface EpisodesDetails {
 export interface EpisodeDetails {
 	episode: Episode
 }
-export interface EpisodesByIdsDetails {
-	episodesByIds: Episode[]
-}
+// export interface EpisodesByIdsDetails {
+// 	episodesByIds: Episode[]
+// }
 
 export interface Episodes {
 	info: {

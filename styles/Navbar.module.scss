@@ -10,7 +10,7 @@
 	position: fixed;
 	transition: all 0.5s;
 	z-index: 10;
-	> h1 {
+	> h2 {
 		margin-left: 1rem;
 		text-transform: uppercase;
 		cursor: pointer;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: $bp-xxs){
-	.navbarRoot > h1 {
+	.navbarRoot > h2 {
 		font-size: 1.5rem;
 	}
 }

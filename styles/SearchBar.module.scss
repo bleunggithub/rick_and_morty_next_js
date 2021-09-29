@@ -5,7 +5,6 @@
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 1rem;
 
 	& > h1 {
 		width: 100%;
@@ -25,7 +24,8 @@
 	& > input {
 		height: 2rem;
 		width: 80%;
-		border: 0;
+		border: 1px solid #fff;
+		border-radius: $br 0 0 $br;
 		padding: 0 10px;
 	}
 }

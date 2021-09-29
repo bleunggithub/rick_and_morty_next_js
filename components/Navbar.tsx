@@ -29,12 +29,12 @@ const Navbar = () => {
   },[])
 
   return (
-    <div className={styles.navbarRoot} ref={ref}>
+    <nav className={styles.navbarRoot} ref={ref}>
       <Image src={appIcon} width={50} height={50} />
       <Link href="/">
-        <h1>Rick and Morty</h1>
+        <h2>Rick and Morty</h2>
       </Link>
-    </div>
+    </nav>
   )
 }
 

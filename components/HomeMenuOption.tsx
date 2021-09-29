@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion'
 import { Routes } from '../interface'
 
-interface HomeMenuButtonProps {
+interface HomeMenuOptionProps {
   routeName: Routes
   selected: boolean
   handleClickLink: (e: React.MouseEvent<HTMLAnchorElement>, selected: Routes) => void
   offset?: string
 }
 
-const HomeMenuButton = ({routeName, selected, handleClickLink, offset = '0'}:HomeMenuButtonProps) => {
+const HomeMenuOption = ({routeName, selected, handleClickLink, offset = '0'}:HomeMenuOptionProps) => {
 
   return (
     <motion.section 
@@ -37,4 +37,4 @@ const HomeMenuButton = ({routeName, selected, handleClickLink, offset = '0'}:Hom
   )
 }
 
-export default HomeMenuButton
+export default HomeMenuOption

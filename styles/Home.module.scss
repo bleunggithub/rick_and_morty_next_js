@@ -1,22 +1,23 @@
 @import "vars.module.scss";
 
 .homeRoot {
-	width: 100%;
+	@include fullscreen-container;
 }
 
-.fullScreenContainer {
+.homeContainer {
+	@include vertical-flex;
+	@include fullscreen-container;
 	overflow: hidden;
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	flex-wrap: nowrap;
+
 	> section {
-		width: calc(100% / 3);
+		width: 100%;
+		height: calc(100vh / 3);
+
 		display: flex;
 		padding: 2rem;
 		align-items: center;
 		> a {
-			font-size: 3.5rem;
+			font-size: 2rem;
 			text-transform: uppercase;
 			&:hover {
 				transition: all 0.5s;
@@ -36,6 +37,7 @@
 	}
 }
 
+//!
 .cardsContainer {
 	display: flex;
 	flex-wrap: wrap;
@@ -50,15 +52,14 @@
 	}
 }
 
-@media (max-width: $bp-xl){
-	.fullScreenContainer {
-		flex-wrap: wrap;
-		flex-direction: column;
+@media (min-width: $bp-lg){
+	.homeContainer {
+		@include horizontal-flex;
 		> section {
-			width: 100%;
-			height: calc(100vh / 3);
+			width: calc(100% / 3);
+			min-height: 100vh;
 			> a {
-				font-size: 2rem;
+				font-size: 3.5rem;
 			}
 		}
 	}
