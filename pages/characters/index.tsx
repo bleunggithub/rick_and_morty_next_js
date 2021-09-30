@@ -1,4 +1,4 @@
-import styles from '../../styles/Characters.module.scss'
+import styles from '../../styles/Characters.module.scss' 
 
 const Characters = () => {
   return (
