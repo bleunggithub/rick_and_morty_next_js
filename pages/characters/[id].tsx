@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
 import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface'
 import { initializeApollo } from '../../lib/apolloClient'
-import styles from '../../styles/Episode.module.scss'
+import styles from '../../styles/Episodes.module.scss'
 import CharacterCard from '../../components/CharacterCard'
 
 interface CharacterDetailsProps {
