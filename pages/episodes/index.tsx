@@ -1,5 +1,4 @@
 import { useLazyQuery } from '@apollo/client'
-import { motion } from 'framer-motion'
 import { GetStaticProps } from 'next'
 import { useState } from 'react'
 import { animationProps } from '../../animations/defaultValues'
@@ -9,7 +8,7 @@ import SearchBar from '../../components/SearchBar'
 import { GET_ALL_EPISODES } from '../../GraphQL/Queries'
 import { Episode, Episodes, EpisodesDetails } from '../../interface'
 import { initializeApollo } from '../../lib/apolloClient'
-import styles from '../../styles/Episodes.module.scss'
+import { EpisodesHomeRoot, EpisodesHomeSearchContainer, EpisodesHomeMainContent } from '../../styles/OptionsPage'
 
 interface EpisodesPageProps {
   episodes: Episodes
@@ -54,24 +53,22 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
   }
 
   return (
-    <div className={styles.episodesHomeRoot}>
-      <motion.aside 
-        className={styles.searchContainer}
+    <EpisodesHomeRoot>
+      <EpisodesHomeSearchContainer
         variants={contentVariants}
         {...animationProps}
       >
         <h1>Episodes</h1>
         <SearchBar />
-      </motion.aside>
+      </EpisodesHomeSearchContainer>
 
-      <motion.main 
-        className={styles.episodeDetailsContainer}
+      <EpisodesHomeMainContent
         variants={contentVariants}
         {...animationProps}
       >
         <EpisodeInfoCardList episodeInfo={episodeDetails}/>
-      </motion.main>
-    </div>
+      </EpisodesHomeMainContent>
+    </EpisodesHomeRoot>
   )
 }
 

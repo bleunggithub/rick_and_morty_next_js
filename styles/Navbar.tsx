@@ -1,6 +1,7 @@
-@import "./Vars.module.scss";
+import styled from 'styled-components'
+import { bp } from './variables'
 
-.navbarRoot {
+export const NavbarRoot = styled.nav`
 	height: 80px;
 	width: 100%;
 	padding: 1rem;
@@ -10,15 +11,13 @@
 	position: fixed;
 	transition: all 0.5s;
 	z-index: 10;
+
 	> h2 {
 		margin-left: 1rem;
 		text-transform: uppercase;
 		cursor: pointer;
+    @media (max-width: ${bp.xxs}){
+      font-size: 1.5rem;
+    }
 	}
-}
-
-@media (max-width: $bp-xxs){
-	.navbarRoot > h2 {
-		font-size: 1.5rem;
-	}
-}
+`

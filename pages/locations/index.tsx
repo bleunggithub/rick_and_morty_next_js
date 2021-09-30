@@ -1,10 +1,10 @@
-import styles from '../../styles/Locations.module.scss'
+import { LocationsHomeRoot } from '../../styles/OptionsPage'
 
 const Locations = () => {
   return (
-    <main className={styles.locationsHomeRoot} >
+    <LocationsHomeRoot>
       hi
-    </main>
+    </LocationsHomeRoot>
   )
 }
 

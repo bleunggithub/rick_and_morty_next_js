@@ -2,8 +2,8 @@ import { useLazyQuery } from '@apollo/client'
 import { useEffect, useState } from 'react'
 import { SEARCH_EPISODES_BY_NAME } from '../GraphQL/Queries'
 import { Episode, EpisodesDetails } from '../interface'
-import styles from '../styles/SearchBar.module.scss'
 import EpisodeInfoCard from './EpisodeInfoCard'
+import { SearchBarRoot, SearchBarForm } from '../styles/SearchBar'
 
 
 const SearchBar = () => {
@@ -46,8 +46,8 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className={styles.searchBarRoot}>
-        <form className={styles.searchBarForm} onSubmit={handleSearch}>
+      <SearchBarRoot>
+        <SearchBarForm onSubmit={handleSearch}>
           <input
             placeholder="Search by episode name"
             type="search"
@@ -56,8 +56,8 @@ const SearchBar = () => {
             onChange={handleInputChange}
           /> 
           <button>Search</button>
-        </form>
-      </div>
+        </SearchBarForm>
+      </SearchBarRoot>
     {/* {loading && (<p className={styles.statusText}>Loading search results...</p>)}
     {error && (<p className={styles.statusText}>An error has occurred: {error}</p>)}
     {searchResults && (

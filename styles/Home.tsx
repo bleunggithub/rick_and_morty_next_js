@@ -1,12 +1,17 @@
-@import "./Vars.module.scss";
+import styled from 'styled-components'
+import { bgColor, bp } from './variables'
 
-.homeRoot {
-	@include fullscreen-container;
-}
+export const HomeRoot = styled.div`
+  width: 100%;
+  min-height: 100vh;
+`
 
-.homeContainer {
-	@include vertical-flex;
-	@include fullscreen-container;
+export const HomeContainer = styled.main`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 	overflow: hidden;
 
 	> section {
@@ -27,34 +32,18 @@
 		}
 	}
 	& section:first-child {
-		background-color: $bg-light;
+		background-color: ${bgColor.light};
 	}
 	& section:nth-child(2) {
-		background-color: $bg-medium;
+		background-color: ${bgColor.medium};
 	}
 	& section:last-child {
-		background-color: $bg-dark;
+		background-color: ${bgColor.dark};
 	}
-}
 
-//!
-.cardsContainer {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	padding: 1rem;
-
-	& > p {
-		width: 100%;
-		text-align: center;
-		margin-top: 1rem;
-	}
-}
-
-@media (min-width: $bp-lg){
-	.homeContainer {
-		@include horizontal-flex;
+  @media (min-width: ${bp.lg}){
+    flex-direction: row;
+    flex-wrap: nowrap;
 		> section {
 			width: calc(100% / 3);
 			min-height: 100vh;
@@ -63,4 +52,5 @@
 			}
 		}
 	}
-}
+
+`

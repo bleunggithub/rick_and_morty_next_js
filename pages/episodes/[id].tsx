@@ -3,18 +3,19 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
 import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface'
 import { initializeApollo } from '../../lib/apolloClient'
-import styles from '../../styles/Episodes.module.scss'
 import CharacterCard from '../../components/CharacterCard'
+import { CharacterCardsContainer } from '../../styles/Cards'
+import { IdRoot, IdDetailTextContainer } from '../../styles/Id'
 
-interface EpisodeWithCharacterDetailsProps {
+interface EpisodeIdPageProps {
   episode: Episode
 }
 
-const EpisodeWithCharacterDetails = ({episode}: EpisodeWithCharacterDetailsProps) => {
+const EpisodeIdPage = ({episode}: EpisodeIdPageProps) => {
 
   return (
-    <div className={styles.episodeIdPageRoot}>
-      <div className={styles.episodeDetailText}>
+    <IdRoot>
+      <IdDetailTextContainer>
         <p>
           <b>Episode Number </b>
           <span>{episode.id}</span>
@@ -32,22 +33,22 @@ const EpisodeWithCharacterDetails = ({episode}: EpisodeWithCharacterDetailsProps
           <span>{new Date(episode.created).toLocaleDateString()}</span>
         </p>
         <p><b>Character List </b></p>
-      </div>
+      </IdDetailTextContainer>
 
-      <div className={styles.characterCardsContainer}>
+      <CharacterCardsContainer>
         {episode.characters.map((ch) => (
           <CharacterCard 
             key={ch.id}
             character={ch}
           />
         ))}
-      </div>
+      </CharacterCardsContainer>
       
-    </div>
+    </IdRoot>
   )
 }
 
-export default EpisodeWithCharacterDetails
+export default EpisodeIdPage
 
 export const getStaticProps: GetStaticProps = async({params}) =>{
 

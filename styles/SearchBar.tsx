@@ -1,7 +1,8 @@
-@import "./Vars.module.scss";
+import styled from "styled-components"
+import { border } from "./variables"
 
-.searchBarRoot {
-	display: flex;
+export const SearchBarRoot = styled.div`
+  display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
@@ -12,9 +13,9 @@
 		text-transform: uppercase;
 		margin-bottom: 0;
 	}
-}
+`
 
-.searchBarForm {
+export const SearchBarForm = styled.form`
 	height: 4rem;
 	width: 100%;
 	padding: 10px 0;
@@ -25,16 +26,16 @@
 		height: 2rem;
 		width: 80%;
 		border: 1px solid #fff;
-		border-radius: $br 0 0 $br;
+		border-radius: ${border.radius} 0 0 ${border.radius};
 		padding: 0 10px;
 	}
-}
-
-.statusText {
+`
+//!
+export const StatusText = styled.p`
 	text-align: center;
-}
-
-.searchResultsRoot {
+`
+//!
+export const SearchResultsRoot = styled.div`
 	display: flex;
 	padding: 1rem;
-}
+`

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Episode } from '../interface'
-import styles from '../styles/EpisodeInfoCard.module.scss'
-
+import { EpisodeCard, TitleText, DetailText, EpisodeIdText } from '../styles/Cards'
 interface EpisodeInfoCardProps{
   episode: Episode
 }
@@ -9,26 +8,26 @@ interface EpisodeInfoCardProps{
 const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
   return (
-    <div className={styles.episodeInfoCardRoot}>
+    <EpisodeCard>
       <div>
-        <h5 className={styles.titleText}>Episode Name</h5>
-        <p className={styles.detailText}>{episode.name}</p>
+        <TitleText>Episode Name</TitleText>
+        <DetailText>{episode.name}</DetailText>
       </div>
 
       <div>
-        <p className={styles.titleText}>Air Date</p>
-        <p className={styles.detailText}>{episode.air_date}</p>
+        <TitleText>Air Date</TitleText>
+        <DetailText>{episode.air_date}</DetailText>
       </div>
 
       <div>
-        <p className={styles.titleText}>Created</p>
-        <p className={styles.detailText}>{new Date(episode.created).toLocaleDateString()}</p>
+        <TitleText>Created</TitleText>
+        <DetailText>{new Date(episode.created).toLocaleDateString()}</DetailText>
       </div>
 
       <div>
-        <p className={styles.titleText}>Characters</p>
+        <TitleText>Characters</TitleText>
         {episode.characters.slice(0,3).map((ch)=>(
-          <p className={styles.detailText} key={ch.id}>{ch.name}</p>
+          <DetailText key={ch.id}>{ch.name}</DetailText>
         ))}
         {episode.characters.length > 3 && (
           <small>and more</small>
@@ -36,10 +35,10 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
       </div>
 
       <div>
-        <span className={styles.episodeIdText}>{episode.id}</span>
+        <EpisodeIdText>{episode.id}</EpisodeIdText>
         <Link href={`/episodes/${episode.id}`}>... see more</Link>
       </div>
-    </div>
+    </EpisodeCard>
   )
 }
 

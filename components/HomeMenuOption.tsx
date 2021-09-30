@@ -12,17 +12,13 @@ const HomeMenuOption = ({routeName, selected, handleClickLink, offset = '0'}:Hom
 
   return (
     <motion.section 
-      {...selected ? {
+      {...selected && {
         exit: {
           scale: 5, 
           x: offset, 
           transition: { 
             duration: 1.5 
           }
-        }
-      }:{
-        exit:{
-          opacity: 0,
         }
       }}
     >

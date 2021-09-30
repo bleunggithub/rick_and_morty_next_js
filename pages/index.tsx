@@ -1,8 +1,8 @@
 import { useRouter } from 'next/dist/client/router'
-import styles from '../styles/Home.module.scss'
 import { useState } from 'react'
 import { Routes } from '../interface'
 import HomeMenuOption from '../components/HomeMenuOption'
+import { HomeContainer, HomeRoot } from '../styles/Home'
 
 export default function Index() {
   const [selectedRoute, setSelectedRoute] = useState<null | Routes>(null)
@@ -16,8 +16,8 @@ export default function Index() {
   }
 
   return (
-    <div className={styles.homeRoot}>
-      <main className={styles.homeContainer}>
+    <HomeRoot>
+      <HomeContainer>
         <HomeMenuOption 
           routeName='episodes' 
           selected={selectedRoute === 'episodes'}
@@ -35,7 +35,7 @@ export default function Index() {
           handleClickLink={handleClickLink}
           offset='-50vw'
         />
-      </main>
-    </div>
+      </HomeContainer>
+    </HomeRoot>
   )
 }

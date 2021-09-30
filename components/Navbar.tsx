@@ -1,4 +1,4 @@
-import styles from '../styles/Navbar.module.scss'
+import { NavbarRoot } from '../styles/Navbar'
 import Image from 'next/image'
 import appIcon from '../public/app-icon.png'
 import { useRef, useEffect } from 'react'
@@ -29,12 +29,12 @@ const Navbar = () => {
   },[])
 
   return (
-    <nav className={styles.navbarRoot} ref={ref}>
+    <NavbarRoot ref={ref}>
       <Image src={appIcon} width={50} height={50} />
       <Link href="/">
         <h2>Rick and Morty</h2>
       </Link>
-    </nav>
+    </NavbarRoot>
   )
 }
 

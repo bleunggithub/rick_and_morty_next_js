@@ -1,10 +1,10 @@
-import styles from '../../styles/Characters.module.scss' 
+import { CharactersHomeRoot } from '../../styles/OptionsPage'
 
 const Characters = () => {
   return (
-    <main className={styles.charactersHomeRoot}>
+    <CharactersHomeRoot>
       hi
-    </main>
+    </CharactersHomeRoot>
   )
 }
 
