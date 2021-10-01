@@ -4,7 +4,7 @@ import { Route } from '../interface'
 interface HomeMenuOptionProps {
   routeName: Route
   selected: boolean
-  handleClickLink: (e: React.MouseEvent<HTMLAnchorElement>, selected: Routes) => void
+  handleClickLink: (e: React.MouseEvent<HTMLAnchorElement>, selected: Route) => void
   offset?: string
 }
 
