@@ -19,7 +19,9 @@ export const margin = {
 }
 
 export const padding = {
-	appSide: "5%",
+	smSide: "2rem",
+	lgSide: "3rem",
+	bottom: "2rem",
 }
 
 export const border = {

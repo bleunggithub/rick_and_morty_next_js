@@ -27,20 +27,17 @@ p {
 	margin: 0;
 }
 
-button {
-	height: 2rem;
-	border: 1px solid #fff;
-	border-radius: 0 2px 2px 0;
-	background-color: transparent;
-	color: inherit;
-	cursor: pointer;
-	text-transform: uppercase;
-}
-
 ::placeholder {
 	color: #a7cb54;
 }
 
 :focus {
 	outline: 1px solid #fff;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	color: inherit;
+	cursor: pointer;
 }

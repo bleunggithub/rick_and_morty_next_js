@@ -1,6 +1,9 @@
 import Link from 'next/link'
-import { Episode } from '../interface'
-import { EpisodeCard, TitleText, DetailText, EpisodeIdText } from '../styles/Cards'
+import { Episode } from '../interface/episodes'
+import Avatar from './Avatar'
+import { EpisodeCard, EpisodeNameText, TitleText, DetailText, EpisodeIdOutlineText } from '../styles/Cards'
+import { FlexRow } from '../styles/BaseElements'
+import { parseEpisodeSeasons } from '../helpers/episodes'
 interface EpisodeInfoCardProps{
   episode: Episode
 }
@@ -9,35 +12,34 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
   return (
     <EpisodeCard>
-      <div>
-        <TitleText>Episode Name</TitleText>
-        <DetailText>{episode.name}</DetailText>
-      </div>
+      <FlexRow margin="0 0 1rem 0">
+        <Link href={`/episodes/${episode.id}`}>
+          <EpisodeNameText>#{episode.id} {episode.name}</EpisodeNameText>
+        </Link>
+      </FlexRow>
 
-      <div>
+      <FlexRow margin="0 0 0.8rem 0">
         <TitleText>Air Date</TitleText>
         <DetailText>{episode.air_date}</DetailText>
-      </div>
+      </FlexRow>
 
-      <div>
-        <TitleText>Created</TitleText>
-        <DetailText>{new Date(episode.created).toLocaleDateString()}</DetailText>
-      </div>
-
-      <div>
-        <TitleText>Characters</TitleText>
-        {episode.characters.slice(0,3).map((ch)=>(
-          <DetailText key={ch.id}>{ch.name}</DetailText>
+      <FlexRow margin="0 0 0.8rem 0">
+        <TitleText>Episode</TitleText>
+        <DetailText>{parseEpisodeSeasons(episode.episode)}</DetailText>
+      </FlexRow>
+      
+      <TitleText fullWidth>Characters</TitleText>
+      <FlexRow margin="0.8rem 0 0 0">
+        {episode.characters.slice(0,5).map((ch)=>(
+          <Avatar 
+            key={ch.id}
+            id={ch.id}
+            name={ch.name}
+            image={ch.image}
+            status={ch.status}
+          />
         ))}
-        {episode.characters.length > 3 && (
-          <small>and more</small>
-        )}
-      </div>
-
-      <div>
-        <EpisodeIdText>{episode.id}</EpisodeIdText>
-        <Link href={`/episodes/${episode.id}`}>... see more</Link>
-      </div>
+      </FlexRow>
     </EpisodeCard>
   )
 }

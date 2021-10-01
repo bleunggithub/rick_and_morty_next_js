@@ -5,8 +5,8 @@ import { animationProps } from '../../animations/defaultValues'
 import { contentVariants } from '../../animations/variants'
 import EpisodeInfoCardList from '../../components/EpisodeInfoCardList'
 import SearchBar from '../../components/SearchBar'
-import { GET_ALL_EPISODES } from '../../GraphQL/Queries'
-import { Episode, Episodes, EpisodesDetails } from '../../interface'
+import { GET_EPISODES } from '../../GraphQL/Queries'
+import { Episode, Episodes, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
 import { EpisodesHomeRoot, EpisodesHomeSearchContainer, EpisodesHomeMainContent } from '../../styles/OptionsPage'
 
@@ -20,7 +20,7 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
   const [nextPage, setNextPage] = useState<number | null>(episodes.info.next)
   const [error, setError] = useState<null | string>(null)
 
-  const [loadmore, {loading, fetchMore}] = useLazyQuery<EpisodesDetails>(GET_ALL_EPISODES,{
+  const [loadmore, {loading, fetchMore}] = useLazyQuery<EpisodesDetails>(GET_EPISODES,{
     onCompleted: data => updateEpisodeDetails(data),
     onError: err => {
       setError(err.message)
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async() =>{
   const apolloClient = initializeApollo()
 
   const {data: { episodes }} = await apolloClient.query<EpisodesDetails>({
-    query: GET_ALL_EPISODES,
+    query: GET_EPISODES,
     variables: {
       page: 1
     },

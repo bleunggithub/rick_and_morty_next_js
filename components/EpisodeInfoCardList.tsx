@@ -1,4 +1,4 @@
-import { Episode } from '../interface'
+import { Episode } from '../interface/episodes'
 import EpisodeInfoCard from './EpisodeInfoCard'
 
 interface EpisodeInfoCardListProps{

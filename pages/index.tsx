@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router'
 import { useState } from 'react'
-import { Routes } from '../interface'
+import { Routes } from '../interface/episodes'
 import HomeMenuOption from '../components/HomeMenuOption'
 import { HomeContainer, HomeRoot } from '../styles/Home'
 

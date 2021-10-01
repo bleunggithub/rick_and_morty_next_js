@@ -12,11 +12,13 @@ export const GET_EPISODES = gql`
 			results {
 				id
 				name
+				episode
 				air_date
 				characters {
 					id
 					name
 					status
+					image
 				}
 			}
 		}
@@ -58,6 +60,7 @@ export const SEARCH_EPISODES_BY_NAME = gql`
 					id
 					name
 					status
+					image
 				}
 			}
 		}
@@ -98,6 +101,7 @@ export const GET_CHARACTER = gql`
 		character(id: $id) {
 			id
 			name
+			image
 			status
 			species
 			gender
@@ -129,6 +133,7 @@ export const SEARCH_CHARACTERS_BY_NAME = gql`
 			results {
 				id
 				name
+				image
 				status
 				species
 				gender
@@ -163,6 +168,7 @@ export const GET_LOCATIONS = gql`
 					id
 					name
 					status
+					image
 				}
 			}
 		}
@@ -206,6 +212,7 @@ export const SEARCH_LOCATIONS_BY_NAME = gql`
 					id
 					name
 					status
+					image
 				}
 			}
 		}

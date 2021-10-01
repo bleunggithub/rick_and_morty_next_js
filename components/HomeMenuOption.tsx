@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Routes } from '../interface'
+import { Routes } from '../interface/episodes'
 
 interface HomeMenuOptionProps {
   routeName: Routes

@@ -1,4 +1,4 @@
-import { Character } from '../interface'
+import { Character } from '../interface/episodes'
 import { CharacterCardRoot } from '../styles/Cards'
 interface CharacterCardProps {
   character: Character

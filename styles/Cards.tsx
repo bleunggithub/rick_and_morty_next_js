@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+import { OutlineText } from './BaseElements'
+import { bp } from './variables'
 
 export const CardsContainer = styled.div`
   display: flex;
@@ -31,35 +33,47 @@ export const CharacterCardsContainer = styled.div`
 	justify-content: space-between;
 	row-gap: 1rem;
 `
-
+/////////////////////////////////////////////////////////////////
 export const EpisodeCard = styled.div`
+	/* width: 45%; */
 	width: 100%;
 	margin: 1rem;
 	min-height: 10vh;
-	border: 1px solid #d3d3d3;
-	border-radius: 2px;
 	padding: 1rem;
 	position: relative;
 	display: flex;
-	> div {
-		width: 25%;
+	flex-direction: column;
+	border-radius: 4px;
+	@media (min-width: ${bp.lg}){
+		width: 45%;
 	}
 `
 
-export const TitleText = styled.p`
+export const EpisodeNameText = styled(OutlineText)`
+	font-size: 2rem;
+	cursor: pointer;
+	:hover {
+		font-weight: 600;
+	}
+`
+
+export const TitleText = styled.p<{fullWidth?: boolean}>`
 	font-weight: 600;
+	letter-spacing: 2px;
+	${props => props.fullWidth && css`
+		width: 100%;
+	`}
 `
 
 export const DetailText = styled.p`
-	color: #636363;
+	color: #ffffffad;
 `
 
 
-export const EpisodeIdText = styled.span`
+export const EpisodeIdOutlineText = styled(OutlineText)`
 	font-size: 4rem;
-	z-index: -1;
+	z-index: 1;
 	position: absolute;
 	right: 2rem;
 	bottom: 1rem;
-	color: #d3d3d3;
 `

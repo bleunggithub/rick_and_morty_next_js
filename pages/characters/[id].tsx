@@ -1,7 +1,7 @@
 
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
-import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface'
+import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
 import CharacterCard from '../../components/CharacterCard'
 import { CharacterCardsContainer } from '../../styles/Cards'
@@ -27,10 +27,6 @@ const CharacterIdPage = ({episode}: CharacterIdPageProps) => {
         <p>
           <b>Air Date </b>
           <span>{episode.air_date}</span>
-        </p>
-        <p>
-          <b>Created </b>
-          <span>{new Date(episode.created).toLocaleDateString()}</span>
         </p>
         <p><b>Character List </b></p>
       </IdDetailTextContainer>

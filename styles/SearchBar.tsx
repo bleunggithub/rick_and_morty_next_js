@@ -30,6 +30,17 @@ export const SearchBarForm = styled.form`
 		padding: 0 10px;
 	}
 `
+
+export const SearchButton = styled.button`
+  height: 2rem;
+	border: 1px solid #fff;
+	border-radius: 0 2px 2px 0;
+	background-color: transparent;
+	color: inherit;
+	cursor: pointer;
+	text-transform: uppercase;
+`
+
 //!
 export const StatusText = styled.p`
 	text-align: center;

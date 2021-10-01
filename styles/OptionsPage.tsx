@@ -6,12 +6,12 @@ const PageHomeRoot = styled.div`
   width: 100%;
   min-height: 100vh;
 	overflow: auto;
-	padding: 0 ${padding.appSide};
 	background-color: ${bgColor.light};
 	display: flex;
 	flex-wrap: wrap;
-
+	
   @media (min-width: ${bp.lg}){
+		padding: 0 0 ${padding.bottom} ${padding.lgSide};
     flex-direction: row;
     flex-wrap: nowrap;
   }
@@ -32,6 +32,7 @@ export const LocationsHomeRoot = styled(PageHomeRoot)`
 export const EpisodesHomeSearchContainer = styled(motion.div)`
 	width: 100%;
 	margin-top: ${margin.navbar};
+	padding: ${padding.smSide};
 
   @media (min-width: ${bp.lg}){
 		width: 30%;
@@ -41,8 +42,11 @@ export const EpisodesHomeSearchContainer = styled(motion.div)`
 
 export const EpisodesHomeMainContent = styled(motion.main)`
 	width: 100%;
-
+	display: flex;
+	flex-wrap: wrap;
+	
   @media (min-width: ${bp.lg}){
+		padding-left: ${padding.lgSide};
 		margin-top: ${margin.navbar};
 		width: 70%;
   }

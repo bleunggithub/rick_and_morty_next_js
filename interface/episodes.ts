@@ -1,3 +1,5 @@
+import { CharacterStatus } from "./characters"
+
 export interface EpisodesDetails {
 	episodes: Episodes
 }
@@ -22,18 +24,18 @@ export interface Episodes {
 export interface Episode {
 	id: string
 	name: string
+	episode: string
 	air_date: string
-	created: string
 	characters: Character[]
 }
 
 export interface Character {
 	id: string
 	name: string
-	status?: string
+	image: string
+	status: CharacterStatus
 	species?: string
 	gender?: string
-	image?: string
 }
 
 export type Routes = "episodes" | "characters" | "locations"
