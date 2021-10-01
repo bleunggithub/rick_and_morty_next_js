@@ -1,8 +1,30 @@
-export type CharacterStatus = "Alive" | "Dead" | "unknown"
+import { BriefList, Collection, Info } from "."
+import { BriefEpisodeList } from "./episodes"
+import { BriefLocationList } from "./locations"
 
-export type Collection<Keys extends string, Type> = {
-	[Key in Keys]?: Type
+export interface CharactersDetails {
+	characters: Characters
 }
+export interface CharacterDetails {
+	character: Character
+}
+
+export interface Characters {
+	info: Info
+	results: Character[]
+}
+
+export interface Character extends BriefList {
+	image: string
+	status: CharacterStatus
+	species?: string
+	gender?: string
+	origin?: BriefLocationList
+	location?: BriefLocationList
+	episodes?: BriefEpisodeList
+}
+
+export type CharacterStatus = "Alive" | "Dead" | "unknown"
 
 export const CharacterStatusColorMap: Collection<CharacterStatus, string> = {
 	Alive: "#9DC743",

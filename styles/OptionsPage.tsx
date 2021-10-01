@@ -40,13 +40,14 @@ export const EpisodesHomeSearchContainer = styled(motion.div)`
   }
 `
 
-export const EpisodesHomeMainContent = styled(motion.main)`
+export const EpisodesHomeMainContentContainer = styled(motion.main)`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: flex-end;
 	
   @media (min-width: ${bp.lg}){
-		padding-left: ${padding.lgSide};
+		padding: 0 ${padding.lgSide};
 		margin-top: ${margin.navbar};
 		width: 70%;
   }

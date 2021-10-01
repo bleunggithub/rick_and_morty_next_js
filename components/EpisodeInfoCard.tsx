@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Episode } from '../interface/episodes'
-import Avatar from './Avatar'
-import { EpisodeCard, EpisodeNameText, TitleText, DetailText, EpisodeIdOutlineText } from '../styles/Cards'
+import Avatars from './Avatars'
+import { EpisodeCard, EpisodeNameText, TitleText, DetailText } from '../styles/Cards'
 import { FlexRow } from '../styles/BaseElements'
 import { parseEpisodeSeasons } from '../helpers/episodes'
 interface EpisodeInfoCardProps{
@@ -29,17 +29,7 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
       </FlexRow>
       
       <TitleText fullWidth>Characters</TitleText>
-      <FlexRow margin="0.8rem 0 0 0">
-        {episode.characters.slice(0,5).map((ch)=>(
-          <Avatar 
-            key={ch.id}
-            id={ch.id}
-            name={ch.name}
-            image={ch.image}
-            status={ch.status}
-          />
-        ))}
-      </FlexRow>
+        <Avatars characters={episode.characters.slice(0,6)} />
     </EpisodeCard>
   )
 }

@@ -35,23 +35,24 @@ export const CharacterCardsContainer = styled.div`
 `
 /////////////////////////////////////////////////////////////////
 export const EpisodeCard = styled.div`
-	/* width: 45%; */
 	width: 100%;
 	margin: 1rem;
 	min-height: 10vh;
-	padding: 1rem;
+	padding: 1.5rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	border-radius: 4px;
+	border-bottom: 1px solid #ffffff95;
+	
 	@media (min-width: ${bp.lg}){
-		width: 45%;
+		width: 40%;
 	}
-`
+	`
 
 export const EpisodeNameText = styled(OutlineText)`
-	font-size: 2rem;
 	cursor: pointer;
+	font-size: 2rem;
+	letter-spacing: 2px;
 	:hover {
 		font-weight: 600;
 	}
@@ -67,13 +68,4 @@ export const TitleText = styled.p<{fullWidth?: boolean}>`
 
 export const DetailText = styled.p`
 	color: #ffffffad;
-`
-
-
-export const EpisodeIdOutlineText = styled(OutlineText)`
-	font-size: 4rem;
-	z-index: 1;
-	position: absolute;
-	right: 2rem;
-	bottom: 1rem;
 `

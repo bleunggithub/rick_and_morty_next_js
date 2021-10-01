@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { border } from "./variables"
+import { bgColor, border, bp } from "./variables"
 
 export const SearchBarRoot = styled.div`
   display: flex;
@@ -16,29 +16,45 @@ export const SearchBarRoot = styled.div`
 `
 
 export const SearchBarForm = styled.form`
-	height: 4rem;
 	width: 100%;
 	padding: 10px 0;
 	display: flex;
-	justify-content: flex-start;
+	flex-wrap: wrap;
+	justify-content: flex-end;
 
 	& > input {
 		height: 2rem;
-		width: 80%;
+		width: 55%;
 		border: 1px solid #fff;
-		border-radius: ${border.radius} 0 0 ${border.radius};
+		border-radius: 0 ${border.radius} ${border.radius} 0;
 		padding: 0 10px;
+		color: ${bgColor.dark};
+	}
+
+	@media (min-width: ${bp.sm}){
+		flex-wrap: nowrap;
+
+		& > input {
+			border-radius: 0;
+		}
 	}
 `
 
 export const SearchButton = styled.button`
+	font-size: 0.8rem;
   height: 2rem;
 	border: 1px solid #fff;
-	border-radius: 0 2px 2px 0;
+	border-radius: ${border.radius};
 	background-color: transparent;
-	color: inherit;
 	cursor: pointer;
+	letter-spacing: 1px;
 	text-transform: uppercase;
+	margin-top: 1rem;
+
+	@media (min-width: ${bp.sm}){
+		margin-top: 0;
+		border-radius: 0 ${border.radius} ${border.radius} 0;
+	}
 `
 
 //!

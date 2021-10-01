@@ -5,10 +5,10 @@ import { animationProps } from '../../animations/defaultValues'
 import { contentVariants } from '../../animations/variants'
 import EpisodeInfoCardList from '../../components/EpisodeInfoCardList'
 import SearchBar from '../../components/SearchBar'
-import { GET_EPISODES } from '../../GraphQL/Queries'
+import { GET_EPISODES } from '../../GraphQL/episodes'
 import { Episode, Episodes, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
-import { EpisodesHomeRoot, EpisodesHomeSearchContainer, EpisodesHomeMainContent } from '../../styles/OptionsPage'
+import { EpisodesHomeRoot, EpisodesHomeSearchContainer, EpisodesHomeMainContentContainer } from '../../styles/OptionsPage'
 
 interface EpisodesPageProps {
   episodes: Episodes
@@ -62,12 +62,12 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
         <SearchBar />
       </EpisodesHomeSearchContainer>
 
-      <EpisodesHomeMainContent
+      <EpisodesHomeMainContentContainer
         variants={contentVariants}
         {...animationProps}
       >
         <EpisodeInfoCardList episodeInfo={episodeDetails}/>
-      </EpisodesHomeMainContent>
+      </EpisodesHomeMainContentContainer>
     </EpisodesHomeRoot>
   )
 }

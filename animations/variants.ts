@@ -14,3 +14,20 @@ export const contentVariants = {
 		transition,
 	},
 }
+
+export const SelectMenuAnimationProps = {
+	initial: {
+		scaleY: 0,
+	},
+	animate: {
+		scaleY: 1,
+	},
+	exit: {
+		scaleY: 0,
+		opacity: 0,
+	},
+	style: {
+		originY: 0,
+	},
+	transition,
+}
