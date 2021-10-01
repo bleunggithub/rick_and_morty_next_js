@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import { Routes } from '../interface/episodes'
+import { Route } from '../interface'
 
 interface HomeMenuOptionProps {
-  routeName: Routes
+  routeName: Route
   selected: boolean
   handleClickLink: (e: React.MouseEvent<HTMLAnchorElement>, selected: Routes) => void
   offset?: string
