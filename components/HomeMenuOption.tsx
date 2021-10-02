@@ -9,7 +9,7 @@ interface HomeMenuOptionProps {
 }
 
 const HomeMenuOption = ({routeName, selected, handleClickLink, offset = '0'}:HomeMenuOptionProps) => {
-
+  
   return (
     <motion.section 
       {...selected && {

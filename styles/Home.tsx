@@ -9,10 +9,10 @@ export const HomeRoot = styled.div`
 export const HomeContainer = styled.main`
   width: 100%;
   min-height: 100vh;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-	overflow: hidden;
+	overflow: hidden; */
 
 	> section {
 		width: 100%;
@@ -32,7 +32,7 @@ export const HomeContainer = styled.main`
 		}
 	}
 	& section:first-child {
-		background-color: ${bgColor.light};
+		background-color: #000;
 	}
 	& section:nth-child(2) {
 		background-color: ${bgColor.medium};

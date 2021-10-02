@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const Select = styled.div`
-  width: 45%;
+  width: 40%;
   height: 2rem;
   padding: 0 1rem;
   cursor: pointer;

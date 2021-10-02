@@ -6,6 +6,7 @@ export const SearchBarRoot = styled.div`
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
+	min-width: 30vw;
 
 	& > h1 {
 		width: 100%;
@@ -17,10 +18,10 @@ export const SearchBarRoot = styled.div`
 
 export const SearchBarForm = styled.form`
 	width: 100%;
-	padding: 10px 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
+	height: 2rem;
 
 	& > input {
 		height: 2rem;
@@ -28,7 +29,6 @@ export const SearchBarForm = styled.form`
 		border: 1px solid #fff;
 		border-radius: 0 ${border.radius} ${border.radius} 0;
 		padding: 0 10px;
-		color: ${bgColor.dark};
 	}
 
 	@media (min-width: ${bp.sm}){

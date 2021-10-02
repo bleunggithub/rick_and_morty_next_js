@@ -15,3 +15,5 @@ export interface BriefList {
 	id: string
 	name: string
 }
+
+export const routeOptions: Route[] = ["episodes", "characters", "locations"]

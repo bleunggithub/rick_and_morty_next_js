@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { SelectMenuAnimationProps } from '../animations/variants'
+import { routeOptions } from '../interface'
 import { Query } from '../interface/queries'
 import { Select, CapitalisedLabel, LabelContainer, DropDownIcon } from '../styles/SelectMenu'
 
@@ -16,12 +17,10 @@ interface SelectMenuProps {
   setSearchType: React.Dispatch<React.SetStateAction<Query>>
 }
 
-const dropDownOptions: Query[] = ['episodes', 'characters', 'locations']
-
 const DropDownContent = ({setSearchType}: DropDownContentProps) => {
   return (
     <motion.div layout>
-      {dropDownOptions.map((option) => (
+      {routeOptions.map((option) => (
         <div key={option} onClick={()=>setSearchType!(option)}>
           <CapitalisedLabel hover>{option}</CapitalisedLabel>
         </div>

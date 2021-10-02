@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Route } from '../interface'
 import HomeMenuOption from '../components/HomeMenuOption'
 import { HomeContainer, HomeRoot } from '../styles/Home'
+import { HeroImage } from '../components/HeroImage'
 
 export default function Index() {
   const [selectedRoute, setSelectedRoute] = useState<null | Route>(null)
@@ -17,7 +18,49 @@ export default function Index() {
 
   return (
     <HomeRoot>
-      <HomeContainer>
+      <HeroImage />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      <h1>hi</h1>
+      {/* <HomeContainer>
         <HomeMenuOption 
           routeName='episodes' 
           selected={selectedRoute === 'episodes'}
@@ -35,7 +78,7 @@ export default function Index() {
           handleClickLink={handleClickLink}
           offset='-50vw'
         />
-      </HomeContainer>
+      </HomeContainer> */}
     </HomeRoot>
   )
 }

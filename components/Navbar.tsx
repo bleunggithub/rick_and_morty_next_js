@@ -1,39 +1,60 @@
-import { NavbarRoot } from '../styles/Navbar'
+import { AppLogoContainer, NavbarRoot, AppTitleContainer, NavLinksContainer, MenuButtonContainer, Hamburger } from '../styles/Navbar'
 import Image from 'next/image'
 import appIcon from '../public/app-icon.png'
-import { useRef, useEffect } from 'react'
 import Link from 'next/dist/client/link'
+import SearchBar from './SearchBar'
+import { routeOptions } from '../interface'
+import { useTransform, useViewportScroll } from 'framer-motion'
+import { useState } from 'react'
 
 const Navbar = () => {
-  const ref = useRef<HTMLDivElement>(null)
+  const [isOpenMenu, setIsOpenMenu] = useState(false)
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && ref.current) {
-      let prevScrollPos = window.pageYOffset
+  const toggleMenu = () => {
+    setIsOpenMenu(!isOpenMenu)
+  }
 
-      window.onscroll = () => {
-        const maxScroll = document.body.clientHeight - window.innerHeight
-        const currentScrollPos = window.pageYOffset
-        
-        if ((maxScroll > 0 && prevScrollPos > currentScrollPos && prevScrollPos <= maxScroll) ||
-          (maxScroll <= 0 && prevScrollPos > currentScrollPos) ||
-          (prevScrollPos <= 50 && currentScrollPos <= 50)
-        ) {
-          ref.current!.style.top = '0'
-        } else {
-          ref.current!.style.top = '-150px'
-        }
-        prevScrollPos = currentScrollPos
-      }
-    }
-  },[])
+  const closeMenu = () => {
+    setIsOpenMenu(false)
+  }
+
+  const {scrollY} = useViewportScroll()
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 160, 200],
+    ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)", "#00000080"]
+  )
+
+  const height = useTransform(scrollY, [0,50,100],[670,670,70])
+  
 
   return (
-    <NavbarRoot ref={ref}>
-      <Image src={appIcon} width={50} height={50} />
-      <Link href="/">
-        <h2>Rick and Morty</h2>
-      </Link>
+    <NavbarRoot style={{backgroundColor, height}}>
+      
+      <AppTitleContainer>
+        <h2>Rick</h2>
+        <Link href="/">
+          <a>
+            <AppLogoContainer>
+              <Image src={appIcon} layout="fill" />
+            </AppLogoContainer>
+          </a>
+        </Link>
+        <h2>Morty</h2>
+      </AppTitleContainer>
+      
+      <MenuButtonContainer onClick={toggleMenu}>
+        <Hamburger isOpen={isOpenMenu}/>
+      </MenuButtonContainer>
+
+      <NavLinksContainer isOpen={isOpenMenu}>
+        <SearchBar />
+        {routeOptions.map((route)=>(
+          <Link href={`/${route}`} key={route}>
+            <a onClick={closeMenu}>{route}</a>
+          </Link>
+        ))}
+      </NavLinksContainer>
     </NavbarRoot>
   )
 }

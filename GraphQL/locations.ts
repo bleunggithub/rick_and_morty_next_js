@@ -46,7 +46,7 @@ export const GET_LOCATION = gql`
 
 export const SEARCH_LOCATIONS_BY_NAME = gql`
 	query searchLocationsByName($page: Int, $filter: FilterLocation) {
-		characters(page: $page, filter: $filter) {
+		locations(page: $page, filter: $filter) {
 			info {
 				count
 				pages
