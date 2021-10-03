@@ -59,7 +59,14 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
         variants={contentVariants}
         {...animationProps}
       >
-        <EpisodeInfoCardList episodeInfo={episodeDetails}/>
+        <p>Episodes</p>
+        <EpisodeInfoCardList 
+          episodeInfo={episodeDetails}
+          nextPage={nextPage}
+          handleLoadMore={handleLoadMore}
+          loading={loading}
+          error={error}
+        />
       </EpisodesHomeMainContentContainer>
     </PageHomeRoot>
   )

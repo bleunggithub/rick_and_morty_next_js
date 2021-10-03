@@ -37,17 +37,24 @@ export const CharacterCardsContainer = styled.div`
 export const EpisodeCard = styled.div`
 	width: 100%;
 	margin: 1rem;
-	min-height: 10vh;
+	min-height: 30vh;
 	padding: 1.5rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	border-bottom: 1px solid #ffffff95;
+	border-right: 1px solid #ffffff95;
+	border-bottom: 4px double #ffffff95;
+	transition: all 0.6s ease-in-out;
+	border-radius: 2px;
+
+	:hover{
+		background-color: #ffffff54;
+	}
 	
 	@media (min-width: ${bp.lg}){
-		width: 40%;
+		width: 30%;
 	}
-	`
+`
 
 export const EpisodeNameText = styled(OutlineText)`
 	cursor: pointer;
@@ -56,16 +63,38 @@ export const EpisodeNameText = styled(OutlineText)`
 	:hover {
 		font-weight: 600;
 	}
-	`
+`
 
 export const TitleText = styled.p<{fullWidth?: boolean}>`
 	font-weight: 600;
 	letter-spacing: 2px;
 	${props => props.fullWidth && css`
-	width: 100%;
+		width: 100%;
 	`}
-	`
+`
 
 export const DetailText = styled.p`
 	color: #ffffffad;
-	`
+`
+
+export const StatusContainer = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	
+	>button {
+		padding: 0.5rem;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		width: 100%;
+	}
+
+`

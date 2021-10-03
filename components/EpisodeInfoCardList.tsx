@@ -3,9 +3,13 @@ import EpisodeInfoCard from './EpisodeInfoCard'
 
 interface EpisodeInfoCardListProps{
   episodeInfo: Episode[]
+  nextPage: number | null
+  handleLoadMore: () => void
+  loading: boolean
+  error: string | null
 }
 
-const EpisodeInfoCardList = ({episodeInfo}: EpisodeInfoCardListProps) => {
+const EpisodeInfoCardList = ({episodeInfo, nextPage, handleLoadMore, loading, error}: EpisodeInfoCardListProps) => {
   return (
     <>
       {episodeInfo.map((episode)=>(
@@ -13,7 +17,13 @@ const EpisodeInfoCardList = ({episodeInfo}: EpisodeInfoCardListProps) => {
           key={episode.id} 
           episode={episode}
         />
-      ))}
+        ))}
+        <EpisodeInfoCard 
+          nextPage={nextPage}
+          handleLoadMore={handleLoadMore}
+          loading={loading}
+          error={error}
+        />
     </>
   )
 }

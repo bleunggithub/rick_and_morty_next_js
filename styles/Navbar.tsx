@@ -113,7 +113,7 @@ export const NavLinksContainer = styled(NavItemContainer)<{isOpen: boolean, home
 `
 
 export const MenuButtonContainer = styled.div`
-  margin: 10px;
+  margin: 10px 10px 0 10px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -134,7 +134,6 @@ export const Hamburger = styled.div<{isOpen: boolean, home: boolean}>`
   background-color: #fff;
   transition: all 0.5s ease-in-out;
 	z-index: 30;
-	margin-top: 1rem;
 
 	::before,::after{
 		content: "";
@@ -157,7 +156,7 @@ export const Hamburger = styled.div<{isOpen: boolean, home: boolean}>`
 	  transform: translateX(-50px);
 		background-color: #000;
 		position: fixed;
-		top: ${props.home ? '-580px':'20px'};
+		top: ${props.home ? '-560px':'40px'};
 		right: 25px;
 
 		::before{

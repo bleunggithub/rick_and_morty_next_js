@@ -36,12 +36,13 @@ const Navbar = () => {
       document.body.style.position = 'fixed'
     } else {
       document.body.style.position = ''
-      window.scrollTo(0,scrollPosition || 0)
+      window.scrollTo(0, scrollPosition || 0)
     }
     setIsOpenMenu(!isOpenMenu)
   }
 
   const closeMenu = () => {
+    document.body.style.position = ''
     setIsOpenMenu(false)
   }
 
@@ -49,7 +50,7 @@ const Navbar = () => {
   const backgroundColor = useTransform(
     scrollY,
     [0, 160, 200],
-    ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)", "#00000080"]
+    ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.50)"]
   )
 
   const y = useTransform(scrollY, [0,100],[600,0])
