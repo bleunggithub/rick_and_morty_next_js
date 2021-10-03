@@ -6,9 +6,11 @@ import { FlexRow } from '../styles/BaseElements'
 import { parseEpisodeSeasons } from '../helpers/episodes'
 interface EpisodeInfoCardProps{
   episode: Episode
+  isSelected: boolean
+  back: () => void
 }
 
-const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
+const EpisodeInfoCard = ({ episode, isSelected, back }: EpisodeInfoCardProps) => {
 
   return (
     <EpisodeCard>

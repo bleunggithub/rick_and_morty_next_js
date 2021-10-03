@@ -12,7 +12,7 @@ import { SEARCH_EPISODES_BY_NAME } from "../../GraphQL/episodes"
 import { SEARCH_CHARACTERS_BY_NAME } from "../../GraphQL/characters"
 import { SEARCH_LOCATIONS_BY_NAME } from "../../GraphQL/locations"
 
-const useSearch = () => {
+const useSearch = (closeMenu: () => void) => {
 	const [searchInput, setSearchInput] = useState<string>("")
 	const [searchType, setSearchType] = useState<Query>("episodes")
 	//! add load more pages options

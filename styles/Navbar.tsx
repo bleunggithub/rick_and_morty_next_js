@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { bp } from './variables'
 
 export const NavbarRoot = styled(motion.nav)`
+	height: 70px;
 	width: 100%;
 	padding: 1rem;
 	display: flex;
@@ -15,7 +16,7 @@ export const NavbarRoot = styled(motion.nav)`
 	transition: all 0.5s ease-in-out;
 `
 
-const NavItemContainer = styled.div`
+const NavItemContainer = styled(motion.div)`
 	display: flex;
 	align-items: center;
 	column-gap: 1rem;

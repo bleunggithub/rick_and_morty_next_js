@@ -56,16 +56,26 @@ export const EpisodeNameText = styled(OutlineText)`
 	:hover {
 		font-weight: 600;
 	}
-`
+	`
 
 export const TitleText = styled.p<{fullWidth?: boolean}>`
 	font-weight: 600;
 	letter-spacing: 2px;
 	${props => props.fullWidth && css`
-		width: 100%;
+	width: 100%;
 	`}
-`
+	`
 
 export const DetailText = styled.p`
 	color: #ffffffad;
+	`
+
+/////////////////////////////////////////////////////////////////
+export const CardList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+	display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 `

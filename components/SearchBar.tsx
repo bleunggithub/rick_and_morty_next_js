@@ -2,8 +2,20 @@ import { SearchBarRoot, SearchBarForm, SearchButton } from '../styles/SearchBar'
 import SelectMenu from './SelectMenu'
 import useSearch from './hooks/useSearch'
 
-const SearchBar = () => {
-  const {handleSearch, searchInput, handleInputChange, searchType, setSearchType, isLoading} = useSearch()
+interface SearchBarProps {
+  closeMenu: () => void
+}
+
+const SearchBar = ({ closeMenu }:SearchBarProps) => {
+
+  const { 
+    handleSearch, 
+    searchInput, 
+    handleInputChange, 
+    searchType, 
+    setSearchType, 
+    isLoading 
+  } = useSearch(closeMenu)
 
   return (
     <SearchBarRoot>
