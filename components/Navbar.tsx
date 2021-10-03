@@ -30,8 +30,11 @@ const Navbar = () => {
   const {route} = useRouter()
 
   const toggleMenu = () => {
-    if (window.scrollY < 100 && route === '/') {
-      scrollTo(0,100)
+    
+    if (!isOpenMenu){
+      document.body.style.position = 'fixed'
+    } else {
+      document.body.style.position = ''
     }
     setIsOpenMenu(!isOpenMenu)
   }
@@ -55,10 +58,10 @@ const Navbar = () => {
       <AppHeader />
       
       <MenuButtonContainer onClick={toggleMenu}>
-        <Hamburger isOpen={isOpenMenu}/>
+        <Hamburger isOpen={isOpenMenu}  home={route === '/'}  />
       </MenuButtonContainer>
 
-      <NavLinksContainer isOpen={isOpenMenu}>
+      <NavLinksContainer isOpen={isOpenMenu} home={route === '/'}>
         <SearchBar closeMenu={closeMenu} />
 
         {routeOptions.map((route)=>(

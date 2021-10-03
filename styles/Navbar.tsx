@@ -14,6 +14,10 @@ export const NavbarRoot = styled(motion.nav)`
 	z-index: 10;
 
 	transition: all 0.5s ease-in-out;
+
+	@media (min-width: ${bp.lg}){
+		align-items: center;
+	}
 `
 
 const NavItemContainer = styled(motion.div)`
@@ -56,7 +60,7 @@ export const AppLogoContainer = styled.div`
 
 //----------------- hamburger -----------------//
 
-export const NavLinksContainer = styled(NavItemContainer)<{isOpen: boolean}>`
+export const NavLinksContainer = styled(NavItemContainer)<{isOpen: boolean, home: boolean}>`
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
@@ -68,7 +72,7 @@ export const NavLinksContainer = styled(NavItemContainer)<{isOpen: boolean}>`
 		position: absolute;
 		background-color: #000;
 		right: 0px;
-		top: 0px;
+		top: ${props.home ? '-600px': '0px'};
 		opacity: 1;
 		min-height: 100vh;
 		padding: 5rem 1rem;
@@ -124,7 +128,7 @@ export const MenuButtonContainer = styled.div`
 	}
 `
 
-export const Hamburger = styled.div<{isOpen: boolean}>`
+export const Hamburger = styled.div<{isOpen: boolean, home: boolean}>`
   width: 30px;
   height: 1px;
   background-color: #fff;
@@ -153,7 +157,7 @@ export const Hamburger = styled.div<{isOpen: boolean}>`
 	  transform: translateX(-50px);
 		background-color: #000;
 		position: fixed;
-		top: 20px;
+		top: ${props.home ? '-580px':'20px'};
 		right: 25px;
 
 		::before{

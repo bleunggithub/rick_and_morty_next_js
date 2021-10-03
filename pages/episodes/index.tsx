@@ -8,7 +8,7 @@ import SearchBar from '../../components/SearchBar'
 import { GET_EPISODES } from '../../GraphQL/episodes'
 import { Episode, Episodes, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
-import { EpisodesHomeRoot, EpisodesHomeSearchContainer, EpisodesHomeMainContentContainer } from '../../styles/OptionsPage'
+import { PageHomeRoot, EpisodesHomeMainContentContainer } from '../../styles/OptionsPage'
 
 interface EpisodesPageProps {
   episodes: Episodes
@@ -53,14 +53,7 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
   }
 
   return (
-    <EpisodesHomeRoot>
-      <EpisodesHomeSearchContainer
-        variants={contentVariants}
-        {...animationProps}
-      >
-        <h1>Episodes</h1>
-        <SearchBar />
-      </EpisodesHomeSearchContainer>
+    <PageHomeRoot>
 
       <EpisodesHomeMainContentContainer
         variants={contentVariants}
@@ -68,7 +61,7 @@ const EpisodesPage = ({episodes}: EpisodesPageProps) => {
       >
         <EpisodeInfoCardList episodeInfo={episodeDetails}/>
       </EpisodesHomeMainContentContainer>
-    </EpisodesHomeRoot>
+    </PageHomeRoot>
   )
 }
 

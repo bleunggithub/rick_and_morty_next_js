@@ -69,13 +69,3 @@ export const TitleText = styled.p<{fullWidth?: boolean}>`
 export const DetailText = styled.p`
 	color: #ffffffad;
 	`
-
-/////////////////////////////////////////////////////////////////
-export const CardList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-	display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-`

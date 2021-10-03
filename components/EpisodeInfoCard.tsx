@@ -6,11 +6,9 @@ import { FlexRow } from '../styles/BaseElements'
 import { parseEpisodeSeasons } from '../helpers/episodes'
 interface EpisodeInfoCardProps{
   episode: Episode
-  isSelected: boolean
-  back: () => void
 }
 
-const EpisodeInfoCard = ({ episode, isSelected, back }: EpisodeInfoCardProps) => {
+const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
   return (
     <EpisodeCard>
@@ -21,13 +19,12 @@ const EpisodeInfoCard = ({ episode, isSelected, back }: EpisodeInfoCardProps) =>
       </FlexRow>
 
       <FlexRow margin="0 0 0.8rem 0">
-        <TitleText>Air Date</TitleText>
-        <DetailText>{episode.air_date}</DetailText>
+        <DetailText>{parseEpisodeSeasons(episode.episode)}</DetailText>
       </FlexRow>
 
       <FlexRow margin="0 0 0.8rem 0">
-        <TitleText>Episode</TitleText>
-        <DetailText>{parseEpisodeSeasons(episode.episode)}</DetailText>
+        <TitleText>Air Date</TitleText>
+        <DetailText>{episode.air_date}</DetailText>
       </FlexRow>
       
       <TitleText fullWidth>Characters</TitleText>
