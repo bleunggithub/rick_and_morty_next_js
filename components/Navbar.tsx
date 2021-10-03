@@ -26,15 +26,17 @@ const AppHeader = () => {
 
 const Navbar = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-
   const {route} = useRouter()
+  const [scrollPosition, setScrollPosition] = useState<number>(0)
 
   const toggleMenu = () => {
-    
+    setScrollPosition(window.scrollY)
+
     if (!isOpenMenu){
       document.body.style.position = 'fixed'
     } else {
       document.body.style.position = ''
+      window.scrollTo(0,scrollPosition || 0)
     }
     setIsOpenMenu(!isOpenMenu)
   }
