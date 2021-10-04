@@ -21,7 +21,7 @@ const EpisodeInfoCard = ({ episode, nextPage, handleLoadMore, loading, error }: 
         {episode ? (
           <>
             <FlexRow margin="0 0 1rem 0">
-              <Link href={`/episodes/${episode.id}`} passHref>
+              <Link href={`/episodes/${episode.id}`} passHref scroll={false}>
                 <a><EpisodeNameText>#{episode.id} {episode.name}</EpisodeNameText></a>
               </Link>
             </FlexRow>
