@@ -37,19 +37,16 @@ export const CharacterCardsContainer = styled.div`
 export const EpisodeCard = styled.div`
 	width: 100%;
 	margin: 1rem;
-	min-height: 30vh;
 	padding: 1.5rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	border-right: 1px solid #ffffff95;
-	border-bottom: 4px double #ffffff95;
 	transition: all 0.6s ease-in-out;
 	border-radius: 2px;
-	background-color: #0000002a;
+	background-color: rgba(0, 0, 0, 0.165);
 
 	:hover{
-		background-color: #ffffff3a;
+		background-color: rgba(0, 0, 0, 0.548);
 	}
 	
 	@media (min-width: ${bp.lg}){
@@ -80,11 +77,9 @@ export const DetailText = styled.p`
 
 export const StatusContainer = styled.div`
 	width: 100%;
-	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-wrap: wrap;
 
 	font-size: 1.5rem;
 	text-transform: uppercase;

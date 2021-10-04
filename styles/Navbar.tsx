@@ -40,7 +40,6 @@ const NavItemContainer = styled(motion.div)`
 
 export const AppTitleContainer = styled(NavItemContainer)`
 	justify-content: flex-start;
-	cursor: pointer;
 	width: 20vw;
 
 	> h2 {

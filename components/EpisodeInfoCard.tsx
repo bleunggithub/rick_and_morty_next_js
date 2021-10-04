@@ -7,18 +7,14 @@ import { parseEpisodeSeasons } from '../helpers/episodes'
 import React from 'react'
 interface EpisodeInfoCardProps{
   episode?: Episode
-  nextPage?: number | null
-  handleLoadMore?: () => void
-  loading?: boolean
-  error?: string | null
 }
 
-const EpisodeInfoCard = ({ episode, nextPage, handleLoadMore, loading, error }: EpisodeInfoCardProps) => {
+const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
 
   return (
     <>
       <EpisodeCard>
-        {episode ? (
+        {episode && (
           <>
             <FlexRow margin="0 0 1rem 0">
               <Link href={`/episodes/${episode.id}`} passHref scroll={false}>
@@ -38,17 +34,6 @@ const EpisodeInfoCard = ({ episode, nextPage, handleLoadMore, loading, error }: 
             <TitleText fullWidth>Characters</TitleText>
             <Avatars characters={episode.characters.slice(0,6)} />
           </>
-        ):(
-          <StatusContainer>
-            { nextPage ? (
-              <button onClick={handleLoadMore} disabled={loading}>
-                <span>{loading ? 'Loading...' : 'Load more'}</span>
-              </button>
-            ):(
-              <p>This is the end of the List :&#40;</p>
-            )}
-            { error && <p>An error has occurred: {error}</p>}
-          </StatusContainer>
         )}
       </EpisodeCard>
     </>

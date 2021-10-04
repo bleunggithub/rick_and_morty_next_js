@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 
 export const PageHomeRoot = styled.div`
   width: 100%;
-  min-height: 100vh;
 	overflow: auto;
 	display: flex;
 	flex-wrap: wrap;

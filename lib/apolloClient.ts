@@ -4,9 +4,28 @@ import {
 	HttpLink,
 	InMemoryCache,
 	NormalizedCacheObject,
+	FieldPolicy,
 } from "@apollo/client"
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
+
+const mergePagination: FieldPolicy = {
+	keyArgs: ["filter"],
+	merge(existing, incoming) {
+		return {
+			...incoming,
+			results: existing
+				? [...existing.results, ...incoming.results]
+				: incoming.results,
+		}
+	},
+}
+
+const fields = {
+	episodes: mergePagination,
+	characters: mergePagination,
+	locations: mergePagination,
+}
 
 const createApolloClient = () => {
 	return new ApolloClient({
@@ -14,7 +33,13 @@ const createApolloClient = () => {
 		link: new HttpLink({
 			uri: process.env.NEXT_PUBLIC_API_URI,
 		}),
-		cache: new InMemoryCache(),
+		cache: new InMemoryCache({
+			typePolicies: {
+				Query: {
+					fields,
+				},
+			},
+		}),
 	})
 }
 
