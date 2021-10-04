@@ -12,7 +12,7 @@ const AppHeader = () => {
   return(
     <AppTitleContainer>
       <h2>Rick</h2>
-      <Link href="/">
+      <Link href="/" passHref>
         <a>
           <AppLogoContainer>
             <Image src={appIcon} layout="fill" />
@@ -68,7 +68,7 @@ const Navbar = () => {
         <SearchBar closeMenu={closeMenu} />
 
         {routeOptions.map((route)=>(
-          <Link href={`/${route}`} key={route}>
+          <Link href={`/${route}`} key={route} passHref>
             <a onClick={closeMenu}>{route}</a>
           </Link>
         ))}

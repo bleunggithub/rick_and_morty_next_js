@@ -41,7 +41,7 @@ export const HeroImage = () => {
   const filter = useTransform(
     scrollY,
     [0, 300],
-    ["blur(0px)", "blur(3px)"]
+    ["grayscale(0%)", "grayscale(50%)"]
   );
   
 

@@ -46,9 +46,10 @@ export const EpisodeCard = styled.div`
 	border-bottom: 4px double #ffffff95;
 	transition: all 0.6s ease-in-out;
 	border-radius: 2px;
+	background-color: #0000002a;
 
 	:hover{
-		background-color: #ffffff54;
+		background-color: #ffffff3a;
 	}
 	
 	@media (min-width: ${bp.lg}){

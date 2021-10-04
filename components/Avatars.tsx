@@ -54,7 +54,7 @@ const Avatars = ({characters}: AvatarsProps) => {
               onMouseEnter={()=>handleDisplayName(ch.name)}
               onMouseLeave={()=>handleDisplayName('')}
               >
-              <Link href={`/characters/${ch.id}`}>
+              <Link href={`/characters/${ch.id}`} passHref>
                 <a><AvatarImage src={ch.image} alt={ch.name} width={100} height={100} /></a>
               </Link>
               <StatusBadge color={CharacterStatusColorMap[ch.status] || '#6E8785'} />
