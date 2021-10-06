@@ -9,6 +9,7 @@ const LoaderRoot = styled.div`
   width: 80px;
   height: 80px;
   position: relative;
+  margin: 1rem;
   -webkit-animation: 4s ${spin} linear infinite;
   -moz-animation: 4s ${spin} linear infinite;
   animation: 4s ${spin} linear infinite;
@@ -17,11 +18,9 @@ const LoaderRoot = styled.div`
 
 const Loader = () => {
   return (
-    <>
       <LoaderRoot>
         <Image src={portal} layout="fill" objectFit="scale-down" objectPosition="center center"/>
       </LoaderRoot>
-    </>
   )
 }
 

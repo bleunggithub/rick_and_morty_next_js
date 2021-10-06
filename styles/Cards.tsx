@@ -144,6 +144,7 @@ export const CharacterCard = styled(motion.li)`
 	
   @media (min-width: ${bp.md}){
     width: 20%;
+	  min-height: 20vh;
   }
 `
 export const CharacterImageContainer = styled(motion.div)`
@@ -204,7 +205,11 @@ export const CrossIconContainer = styled.div`
 	z-index: 2;
 `
 export const HorizontalCharacterImageContainer = styled(CharacterImageContainer)`
-  @media (min-width: ${bp.md}){
+  @media (max-width: ${bp.xxs}){
+    height: 45vh;
+  }
+
+	@media (min-width: ${bp.md}){
     height: 80vh;
 		width: 60%;
   }

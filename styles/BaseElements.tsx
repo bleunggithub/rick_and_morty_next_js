@@ -17,6 +17,7 @@ export const FlexRow = styled.div<{
 	alignItems?: string,
 	flexDirection?: string,
 	padding?: string,
+	minHeight?: string
 }>`
 	width: 100%;
   display: flex;
@@ -31,6 +32,10 @@ export const FlexRow = styled.div<{
 	
   ${props => props.padding && css`
     padding: ${props.padding}
+  `}
+	
+  ${props => props.minHeight && css`
+    min-height: ${props.minHeight}
   `}
 `
 
