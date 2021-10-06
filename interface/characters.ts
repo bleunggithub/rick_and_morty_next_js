@@ -17,11 +17,11 @@ export interface Characters {
 export interface Character extends BriefList {
 	image: string
 	status: CharacterStatus
-	species?: string
-	gender?: string
-	origin?: BriefLocationList
-	location?: BriefLocationList
-	episode?: BriefEpisodeList[]
+	species: string
+	gender: string
+	origin: BriefLocationList
+	location: BriefLocationList
+	episode: BriefEpisodeList[]
 }
 
 export type CharacterStatus = "Alive" | "Dead" | "unknown"

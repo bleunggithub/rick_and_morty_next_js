@@ -82,6 +82,10 @@ export const SEARCH_CHARACTERS_BY_NAME = gql`
 					id
 					name
 				}
+				episode {
+					id
+					name
+				}
 			}
 		}
 	}

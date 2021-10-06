@@ -61,33 +61,31 @@ const ExpandedCardText = ({
       <RowWithLink
         padding="0 1rem"
         title="Origin"
-        url={`/locations/${origin?.id}`}
-        content={origin?.name || 'Unknown'}
+        url={`/locations/${origin.id}`}
+        content={origin.name || 'Unknown'}
       />
       <RowWithLink
         padding="0 1rem"
         title="Location"
-        url={`/locations/${location?.id}`}
-        content={location?.name || 'Unknown'}
+        url={`/locations/${location.id}`}
+        content={location.name || 'Unknown'}
       />
 
-      {
-        episode && (
-          <FlexRow padding="1rem" flexDirection="column">
-          <p>Starred in</p>
-            <EpisodeListContainer>
-              {episode.map((episode) => (
-                <Link key={episode.id} href={`/episodes/${episode.id}`}>
-                  <a>
-                    <span>#{episode.id} </span>
-                    <span>{episode.name} </span>
-                  </a>
-                </Link>
-              ))} 
-            </EpisodeListContainer>
-          </FlexRow>
-        )
-      }
+
+      <FlexRow padding="1rem" flexDirection="column">
+        <p>Starred in</p>
+        <EpisodeListContainer>
+          {episode?.map((episode) => (
+            <Link key={episode.id} href={`/episodes/${episode.id}`}>
+              <a>
+                <span>#{episode.id} </span>
+                <span>{episode.name} </span>
+              </a>
+            </Link>
+          ))} 
+        </EpisodeListContainer>
+      </FlexRow>
+
     </div>
   )
 }

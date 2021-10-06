@@ -1,12 +1,14 @@
 import { Character, CharacterDetails } from "../interface/characters"
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
-import { ExpandedCharacterCardRoot, ExpandedCharacterCardContainer, CrossIconContainer, HorizontalCharacterImageContainer, AlignRightText, EpisodeListContainer } from '../styles/Cards'
+import { 
+  ExpandedCharacterCardRoot, 
+  ExpandedCharacterCardContainer, 
+  CrossIconContainer 
+} from '../styles/Cards'
 import { GET_CHARACTER } from "../GraphQL/characters"
 import CrossIcon from "./icons/CrossIcon"
 import { FlexRow } from "../styles/BaseElements"
-import Image from "next/image"
-import Link from "next/link"
 import Loader from './Loader'
 import ExpandedCardImage from './ExpandedCardImage'
 import ExpandedCardText from './ExpandedCardText'
