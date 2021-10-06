@@ -61,13 +61,13 @@ const ExpandedCardText = ({
       <RowWithLink
         padding="0 1rem"
         title="Origin"
-        url={`/locations/${origin.id}`}
+        url={`/locations/?id=${origin.id}`}
         content={origin.name || 'Unknown'}
       />
       <RowWithLink
         padding="0 1rem"
         title="Location"
-        url={`/locations/${location.id}`}
+        url={`/locations/?id=${location.id}`}
         content={location.name || 'Unknown'}
       />
 

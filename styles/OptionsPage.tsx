@@ -25,11 +25,11 @@ export const OptionsMainContentContainer = styled(MainContentContainer)`
   `
 
 ///////////////////////////////////////////////////////////////////////
-export const CharacterMainContentContainer = styled(MainContentContainer)`
+export const PopupMainContentContainer = styled(MainContentContainer)`
   padding-bottom: 2rem;
 `
 
-export const CharacterTitleText = styled.p`
+export const OptionPageTitleText = styled.p`
   margin-top: ${padding.navbar};
   padding-left: 2rem !important;
       

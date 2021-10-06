@@ -12,21 +12,14 @@ import { FlexRow } from "../styles/BaseElements"
 import Loader from './Loader'
 import ExpandedCardImage from './ExpandedCardImage'
 import ExpandedCardText from './ExpandedCardText'
-interface ExpandedCharacterCardProps {
-  activeId: string | null
-  activeCardData: Character | null
-  onClick: (
-    route: string, 
-    cardData: Character | null, 
-    id: string | null
-  ) => void
-}
+import { ExpandedCardProps } from "../interface"
+
 
 const ExpandedCharacterCard = ({ 
   activeId, 
   activeCardData, 
   onClick
-}: ExpandedCharacterCardProps) => {
+}: ExpandedCardProps<Character>) => {
   const [error, setError] = useState<null | string>(null)
 
   const { loading, data } = useQuery<CharacterDetails>(

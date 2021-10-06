@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Episode } from '../interface/episodes'
 import AvatarList from './AvatarList'
-import { EpisodeCard, EpisodeNameText, TitleText, DetailText, StatusContainer } from '../styles/Cards'
+import { EpisodeCard, EpisodeNameText, TitleText, DetailText } from '../styles/Cards'
 import { FlexRow } from '../styles/BaseElements'
 import { parseEpisodeSeasons } from '../helpers/episodes'
 

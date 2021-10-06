@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components'
 import { motion } from 'framer-motion'
 import { OutlineText } from './BaseElements'
-import { bp, padding } from './variables'
+import { bp } from './variables'
 
 export const CardsContainer = styled.div`
   display: flex;

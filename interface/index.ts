@@ -1,3 +1,6 @@
+import { Character } from "./characters"
+import { Location } from "./locations"
+
 export type Collection<Keys extends string, Type> = {
 	[Key in Keys]?: Type
 }
@@ -17,3 +20,17 @@ export interface BriefList {
 }
 
 export const routeOptions: Route[] = ["episodes", "characters", "locations"]
+export interface CardListProps<T> {
+	cardData?: T[]
+	onClick: (route: string, cardData: T | null, id: string | null) => void
+	nextPage: null | boolean
+	handleLoadMore: () => void
+	loading: boolean
+	error: string | null
+}
+
+export interface ExpandedCardProps<T> {
+	activeId: string | null
+	activeCardData: T | null
+	onClick: (route: string, cardData: T | null, id: string | null) => void
+}

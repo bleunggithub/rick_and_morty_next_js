@@ -1,22 +1,9 @@
-import Image from "next/image"
 import { Character } from "../interface/characters"
-import { OutlineText } from "../styles/BaseElements"
-import { CharacterCardsContainer, StatusContainer, CharacterImageContainer, CharacterTextContainer } from '../styles/Cards'
+import { CharacterCardsContainer, StatusContainer } from '../styles/Cards'
 import Loader from './Loader'
 import CharacterCard from './CharacterCard'
+import { CardListProps } from "../interface"
 
-interface CharacterCardListProps {
-  cardData?: Character[]
-  onClick: (
-    route: string, 
-    cardData: Character | null, 
-    id: string | null
-  ) => void
-  nextPage: null | boolean
-  handleLoadMore: () => void
-  loading: boolean
-  error: string | null
-}
 
 const CharacterCardList = ({ 
   cardData, 
@@ -25,7 +12,7 @@ const CharacterCardList = ({
   handleLoadMore, 
   loading, 
   error
-}: CharacterCardListProps) => {
+}: CardListProps<Character>) => {
   return (
     <>
     {cardData && (
