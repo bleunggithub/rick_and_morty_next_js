@@ -10,7 +10,13 @@ interface EpisodeInfoCardListProps{
   error: string | null
 }
 
-const EpisodeInfoCardList = ({episodeInfo, nextPage, handleLoadMore, loading, error}: EpisodeInfoCardListProps) => {
+const EpisodeInfoCardList = ({
+  episodeInfo, 
+  nextPage, 
+  handleLoadMore, 
+  loading, 
+  error
+}: EpisodeInfoCardListProps) => {
   return (
     <>
       {episodeInfo?.map((episode)=>(
@@ -18,16 +24,16 @@ const EpisodeInfoCardList = ({episodeInfo, nextPage, handleLoadMore, loading, er
           key={episode.id} 
           episode={episode}
         />
-        ))}
-        <StatusContainer>
-          {loading && <Loader />}
-          { nextPage && !loading && (
-            <button onClick={handleLoadMore}>
-              <span>Load more</span>
-            </button>
-          )}
-          { error && <p>An error has occurred: {error}</p>}
-        </StatusContainer>
+      ))}
+      <StatusContainer>
+        {loading && <Loader />}
+        { nextPage && !loading && (
+          <button onClick={handleLoadMore}>
+            <span>Load more</span>
+          </button>
+        )}
+        { error && <p>An error has occurred: {error}</p>}
+      </StatusContainer>
     </>
   )
 }

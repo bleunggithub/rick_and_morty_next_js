@@ -5,7 +5,7 @@ import { contentVariants } from '../../animations/variants'
 import EpisodeInfoCardList from '../../components/EpisodeInfoCardList'
 import { GET_EPISODES } from '../../GraphQL/episodes'
 import { EpisodesDetails } from '../../interface/episodes'
-import { PageHomeRoot, EpisodesHomeMainContentContainer } from '../../styles/OptionsPage'
+import { OptionsMainContentContainer } from '../../styles/OptionsPage'
 
 
 const EpisodesPage = () => {
@@ -29,9 +29,7 @@ const EpisodesPage = () => {
   )
 
   return (
-    <PageHomeRoot>
-
-      <EpisodesHomeMainContentContainer
+      <OptionsMainContentContainer
         variants={contentVariants}
         {...animationProps}
       >
@@ -43,8 +41,7 @@ const EpisodesPage = () => {
           loading={loading}
           error={error}
         />
-      </EpisodesHomeMainContentContainer>
-    </PageHomeRoot>
+      </OptionsMainContentContainer>
   )
 }
 

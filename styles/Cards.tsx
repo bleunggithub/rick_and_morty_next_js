@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components'
+import { motion } from 'framer-motion'
 import { OutlineText } from './BaseElements'
-import { bp } from './variables'
+import { bp, padding } from './variables'
 
 export const CardsContainer = styled.div`
   display: flex;
@@ -16,37 +17,54 @@ export const CardsContainer = styled.div`
 	}
 `
 
-export const CharacterCardRoot = styled.div`
-	width: 30%;
-	border: 1px solid #d3d3d3;
+export const AvatarCardRoot = styled.div`
+	width: 100px;
 	border-radius: 2px;
-	padding: 1rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: relative;
+
+	@media (min-width: ${bp.md}){
+		margin: 1rem 2rem;
+	}
 `
 
-export const CharacterCardsContainer = styled.div`
-	margin-top: 1rem;
+export const NameOverlay = styled.div`
+  position: absolute;
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100px;
+	height: 100px;
+	border-radius: 50% 0;
+	right: 0px;
+	bottom: 4px;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	row-gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	transition: all 0.3s ease-in-out;
+	
+	> span {
+		text-shadow: 2px 2px 2px #ffffff83;
+	}
+
+	:hover {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
 `
 /////////////////////////////////////////////////////////////////
 export const EpisodeCard = styled.div`
 	width: 100%;
-	margin: 1rem;
 	padding: 1.5rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	transition: all 0.6s ease-in-out;
 	border-radius: 2px;
-	background-color: rgba(0, 0, 0, 0.165);
+	background-color: #0000002a;
 
 	:hover{
-		background-color: rgba(0, 0, 0, 0.548);
+		background-color: #0000007f;
 	}
 	
 	@media (min-width: ${bp.lg}){
@@ -92,5 +110,133 @@ export const StatusContainer = styled.div`
 		letter-spacing: 2px;
 		width: 100%;
 	}
+`
+/////////////////////////////////////////////////////////////////
 
+
+export const CharacterCardsContainer = styled(motion.ul)`
+  width: 100%;
+  margin-top: 0;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  column-gap: 2rem;
+  row-gap: 2rem;
+    
+  @media (min-width: ${bp.md}){
+    padding: 1rem 5rem;
+  }
+`
+
+export const CharacterCard = styled(motion.li)`
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	cursor: pointer;
+  border-radius: 2px;
+  width: 100%;
+  background-color: #0000002a;
+  min-height: 45vh;
+  position: relative;
+	
+  @media (min-width: ${bp.md}){
+    width: 20%;
+  }
+`
+export const CharacterImageContainer = styled(motion.div)`
+	width: 100%;
+	height: 300px;
+	position: relative;
+	
+	@media (min-width: ${bp.md}){
+		height: 230px;
+  }
+`
+export const CharacterTextContainer = styled.div`
+	width: 100%;
+	padding: 1rem;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	column-gap: 1rem;
+`
+
+export const ExpandedCharacterCardRoot = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background-color: #000000c4;
+	width: 90vw;
+	height: 100vh;
+	
+  @media (min-width: ${bp.xxs}){
+    height: 80vh;
+  }
+	
+	>div>div {
+			@media (min-width: ${bp.md}){
+				flex-wrap: nowrap;
+				flex-direction: row;
+			}
+			>div:last-child{
+				width: 100%;
+				@media (min-width: ${bp.md}){
+					width: 40%;
+				}
+			}
+		}
+
+`
+
+export const CrossIconContainer = styled.div`
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	z-index: 2;
+`
+export const HorizontalCharacterImageContainer = styled(CharacterImageContainer)`
+  @media (min-width: ${bp.md}){
+    height: 80vh;
+		width: 60%;
+  }
+`
+
+export const AlignRightText = styled.p`
+	margin-left: 1rem;
+	text-align: right;
+	text-transform: capitalize;
+`
+
+export const EpisodeListContainer = styled.div`
+	background-color: #00000053;
+	width: 100%;
+	height: 15vh;
+	overflow: auto;
+	margin-top: 10px;
+	padding: 1rem;
+
+	>a {
+		display: block;
+		width: 100%;
+		margin-bottom: 0.5rem;
+	}
+
+  @media (min-width: ${bp.md}){
+		height: 35vh;
+	}
+`
+
+export const ExpandedCharacterCardContainer = styled(motion.div)`
+  border-radius: 10px;
+  width: 100vw;
+  height: 300px;
 `

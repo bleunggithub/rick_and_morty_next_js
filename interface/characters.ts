@@ -21,7 +21,7 @@ export interface Character extends BriefList {
 	gender?: string
 	origin?: BriefLocationList
 	location?: BriefLocationList
-	episodes?: BriefEpisodeList
+	episode?: BriefEpisodeList[]
 }
 
 export type CharacterStatus = "Alive" | "Dead" | "unknown"

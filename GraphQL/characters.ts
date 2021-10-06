@@ -24,6 +24,10 @@ export const GET_CHARACTERS = gql`
 					id
 					name
 				}
+				episode {
+					id
+					name
+				}
 			}
 		}
 	}
@@ -46,7 +50,7 @@ export const GET_CHARACTER = gql`
 				id
 				name
 			}
-			episodes {
+			episode {
 				id
 				name
 			}

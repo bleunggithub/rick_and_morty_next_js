@@ -3,9 +3,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
 import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
-import CharacterCard from '../../components/CharacterCard'
-import { CharacterCardsContainer } from '../../styles/Cards'
-import { IdRoot, IdDetailTextContainer } from '../../styles/Id'
+import CharacterCard from '../../components/AvatarCard'
+// import { CharacterCardsContainer } from '../../styles/Cards'
+// import { IdRoot, IdDetailTextContainer } from '../../styles/Id'
 
 interface LocationIdPageProps {
   episode: Episode
@@ -14,33 +14,35 @@ interface LocationIdPageProps {
 const LocationIdPage = ({episode}: LocationIdPageProps) => {
 
   return (
-    <IdRoot>
-      <IdDetailTextContainer>
-        <p>
-          <b>Episode Number </b>
-          <span>{episode.id}</span>
-        </p>
-        <p>
-          <b>Episode Name </b>
-          <span>{episode.name}</span>
-        </p>
-        <p>
-          <b>Air Date </b>
-          <span>{episode.air_date}</span>
-        </p>
-        <p><b>Character List </b></p>
-      </IdDetailTextContainer>
+    <>
+    </>
+    // <IdRoot>
+    //   <IdDetailTextContainer>
+    //     <p>
+    //       <b>Episode Number </b>
+    //       <span>{episode.id}</span>
+    //     </p>
+    //     <p>
+    //       <b>Episode Name </b>
+    //       <span>{episode.name}</span>
+    //     </p>
+    //     <p>
+    //       <b>Air Date </b>
+    //       <span>{episode.air_date}</span>
+    //     </p>
+    //     <p><b>Character List </b></p>
+    //   </IdDetailTextContainer>
 
-      <CharacterCardsContainer>
-        {episode.characters.map((ch) => (
-          <CharacterCard 
-            key={ch.id}
-            character={ch}
-          />
-        ))}
-      </CharacterCardsContainer>
+    //   <CharacterCardsContainer>
+    //     {episode.characters.map((ch) => (
+    //       <CharacterCard 
+    //         key={ch.id}
+    //         character={ch}
+    //       />
+    //     ))}
+    //   </CharacterCardsContainer>
       
-    </IdRoot>
+    // </IdRoot>
   )
 }
 

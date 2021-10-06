@@ -1,11 +1,12 @@
 
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { GET_EPISODES_WITH_CHARACTER_DETAILS, GET_CHARACTER_DETAILS_BY_EPISODE_ID } from '../../GraphQL/Queries'
 import { Episode, EpisodeDetails, EpisodesDetails } from '../../interface/episodes'
 import { initializeApollo } from '../../lib/apolloClient'
-import CharacterCard from '../../components/CharacterCard'
-import { CharacterCardsContainer } from '../../styles/Cards'
-import { IdRoot, IdDetailTextContainer } from '../../styles/Id'
+import AvatarCard from '../../components/AvatarCard'
+import { MainContentContainer } from '../../styles/BaseElements'
+import { IdContentContainer, IdTextContainer, TitleText, DetailText, AvatarCardsContainer } from '../../styles/Id'
+import { GET_EPISODE, GET_EPISODES } from '../../GraphQL/episodes'
+import { HeroImage } from '../../components/HeroImage'
 
 interface EpisodeIdPageProps {
   episode: Episode
@@ -14,33 +15,33 @@ interface EpisodeIdPageProps {
 const EpisodeIdPage = ({episode}: EpisodeIdPageProps) => {
 
   return (
-    <IdRoot>
-      <IdDetailTextContainer>
-        <p>
-          <b>Episode Number </b>
-          <span>{episode.id}</span>
-        </p>
-        <p>
-          <b>Episode Name </b>
-          <span>{episode.name}</span>
-        </p>
-        <p>
-          <b>Air Date </b>
-          <span>{episode.air_date}</span>
-        </p>
-        <p><b>Character List </b></p>
-      </IdDetailTextContainer>
+    <MainContentContainer>
+      <HeroImage />
+      <IdContentContainer>
+        <IdTextContainer>
+          <TitleText>
+            #{episode.id} {episode.name}
+          </TitleText>
+          <DetailText>
+            <span>Air Date </span>
+            <span>{episode.air_date}</span>
+          </DetailText>
+          <DetailText>
+            <span>Characters </span>
+          </DetailText>
+        <AvatarCardsContainer>
+          {episode.characters.map((ch) => (
+            <AvatarCard 
+              key={ch.id}
+              character={ch}
+            />
+          ))}
+        </AvatarCardsContainer>
+        </IdTextContainer>
+      </IdContentContainer>
 
-      <CharacterCardsContainer>
-        {episode.characters.map((ch) => (
-          <CharacterCard 
-            key={ch.id}
-            character={ch}
-          />
-        ))}
-      </CharacterCardsContainer>
       
-    </IdRoot>
+    </MainContentContainer>
   )
 }
 
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps = async({params}) =>{
   const apolloClient = initializeApollo()
 
   const {data: {episode}} = await apolloClient.query<EpisodeDetails>({
-    query: GET_CHARACTER_DETAILS_BY_EPISODE_ID,
+    query: GET_EPISODE,
     variables: {
       id: params?.id
     }
@@ -69,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async() => {
   const apolloClient = initializeApollo()
 
   const {data: { episodes }} = await apolloClient.query<EpisodesDetails>({
-    query: GET_EPISODES_WITH_CHARACTER_DETAILS,
+    query: GET_EPISODES,
     variables: {
       page: 1 
     }

@@ -14,14 +14,11 @@ export const bgColor = {
 	dark: "#208d45",
 }
 
-export const margin = {
-	navbar: "5rem",
-}
-
 export const padding = {
-	smSide: "2rem",
-	lgSide: "3rem",
-	bottom: "2rem",
+	navbar: "5rem",
+	smX: "2rem",
+	lgX: "3rem",
+	lgY: "5rem",
 }
 
 export const border = {

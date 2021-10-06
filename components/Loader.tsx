@@ -13,9 +13,6 @@ const LoaderRoot = styled.div`
   -moz-animation: 4s ${spin} linear infinite;
   animation: 4s ${spin} linear infinite;
 `
-const LoadingText = styled.p`
-  position:absolute;
-`
 
 
 const Loader = () => {
@@ -24,7 +21,6 @@ const Loader = () => {
       <LoaderRoot>
         <Image src={portal} layout="fill" objectFit="scale-down" objectPosition="center center"/>
       </LoaderRoot>
-      <LoadingText>Loading</LoadingText>
     </>
   )
 }

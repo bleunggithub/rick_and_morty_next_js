@@ -1,41 +1,26 @@
-import { useTransform, useViewportScroll, motion } from 'framer-motion'
+import { useTransform, useViewportScroll } from 'framer-motion'
 import Image from 'next/image'
-import styled  from 'styled-components'
-import heroImage from '../public/hero.png'
-import { OutlineText } from '../styles/BaseElements'
-import { bp } from '../styles/variables'
+import hero1 from '../public/hero1.png'
+import hero2 from '../public/hero2.jpg'
+import hero3 from '../public/hero3.png'
+import hero4 from '../public/hero4.png'
+import { HeroImageContainer, HeroText } from '../styles/HeroImage'
 
-const HeroImageContainer = styled(motion.div)`
-  position: relative;
-  width: 100vw;
-  max-width: 100%;
-  height: 600px;
-`
-const HeroText = styled(OutlineText)`
-  position: absolute;
-  font-size: 2.7rem;
-  margin-top: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 800;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% - 30px));
+interface HeroImageProps {
+  home?: boolean
+}
 
-  @media (min-width: ${bp.lg}){
-    font-size: 4rem;
-    transform: translate(-50%, calc(-50% - 280px));
-  }
+const images = [hero1, hero2, hero3, hero4]
 
-  @media (min-width: ${bp.xl}){
-    font-size: 5rem;
-    transform: translate(-50%, calc(-50%));
-  }
+const getRandomImage = () => {
+  const min = 0
+  const max = images.length
+  return Math.floor(Math.random() * (max - min))
+}
 
-`
+export const HeroImage = ({home}: HeroImageProps) => {
+  
 
-export const HeroImage = () => {
   const { scrollY } = useViewportScroll()
 
   const filter = useTransform(
@@ -43,14 +28,18 @@ export const HeroImage = () => {
     [0, 300],
     ["grayscale(0%)", "grayscale(50%)"]
   );
-  
 
   return (
     <>
-    <HeroImageContainer style={{filter}}>
-      <Image src={heroImage} layout="fill" objectFit="cover" objectPosition="center center"/>
-    </HeroImageContainer>
-    <HeroText>Rick & Morty<br />Adventures</HeroText>
+      <HeroImageContainer style={{filter}}>
+        <Image 
+          src={images[home ? 0 : getRandomImage()]} 
+          layout="fill" 
+          objectFit="cover" 
+          objectPosition="center center"
+        />
+      </HeroImageContainer>
+      <HeroText>{home && <> Rick & Morty<br />Adventures</>}</HeroText>
     </>
   )
 }
