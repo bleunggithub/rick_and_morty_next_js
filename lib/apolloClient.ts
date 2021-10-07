@@ -74,10 +74,7 @@ export const searchFetchOptions = (
 		notifyOnNetworkStatusChange: true,
 		fetchPolicy: "cache-first" as FetchPolicy,
 		nextFetchPolicy: "cache-first" as FetchPolicy,
-		onError: (err: ApolloError) => {
-			console.error(err)
-			setError(err.message)
-		},
+		onError: (err: ApolloError) => setError(err.message),
 		variables: {
 			filter: {
 				name: searchInput,
