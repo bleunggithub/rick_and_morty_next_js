@@ -3,7 +3,6 @@ import { useQuery } from "@apollo/client"
 import { 
   ExpandedLocationCardRoot, 
   CrossIconContainer, 
-  AlignRightText,
 } from '../styles/Cards'
 import CrossIcon from "./icons/CrossIcon"
 import { FlexRow } from "../styles/BaseElements"
