@@ -4,11 +4,11 @@ import { contentVariants, overlayVariants } from '../animations/variants'
 import { OptionPageTitleText, PopupMainContentContainer, ExpandedCardOverlay } from '../styles/OptionsPage'
 
 interface PopupList {
-  from: string
+  from?: string
   cardList: JSX.Element
   activeId: string | null
-  onClick: React.MouseEventHandler<HTMLDivElement>
-  expandedCard: JSX.Element
+  onClick?: React.MouseEventHandler<HTMLDivElement>
+  expandedCard?: JSX.Element
 }
 
 const PopupList = ({ from, cardList, activeId, onClick, expandedCard }: PopupList) => {
@@ -17,7 +17,7 @@ const PopupList = ({ from, cardList, activeId, onClick, expandedCard }: PopupLis
       variants={contentVariants}
       {...animationProps}
     >
-      <OptionPageTitleText>{from}</OptionPageTitleText>
+      <OptionPageTitleText marginTop={!!from}>{from}</OptionPageTitleText>
       <AnimateSharedLayout>
         <AnimatePresence>
           {cardList}

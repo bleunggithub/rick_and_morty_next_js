@@ -98,6 +98,7 @@ export const DetailText = styled.p`
 export const StatusContainer = styled.div`
 	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 

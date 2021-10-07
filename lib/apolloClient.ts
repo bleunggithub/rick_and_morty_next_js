@@ -5,6 +5,8 @@ import {
 	InMemoryCache,
 	NormalizedCacheObject,
 	FieldPolicy,
+	FetchPolicy,
+	ApolloError,
 } from "@apollo/client"
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
@@ -62,4 +64,24 @@ export const initializeApollo = (
 export const useApollo = (initialState: any) => {
 	const store = useMemo(() => initializeApollo(initialState), [initialState])
 	return store
+}
+
+export const searchFetchOptions = (
+	setError: React.Dispatch<React.SetStateAction<string | null>>,
+	searchInput: string | string[] | undefined
+) => {
+	return {
+		notifyOnNetworkStatusChange: true,
+		fetchPolicy: "cache-first" as FetchPolicy,
+		nextFetchPolicy: "cache-first" as FetchPolicy,
+		onError: (err: ApolloError) => {
+			console.error(err)
+			setError(err.message)
+		},
+		variables: {
+			filter: {
+				name: searchInput,
+			},
+		},
+	}
 }

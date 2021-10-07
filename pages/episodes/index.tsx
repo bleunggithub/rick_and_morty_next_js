@@ -17,9 +17,9 @@ const EpisodesPage = () => {
     onError: err => setError(err.message)
   })
 
-  const { episodes } = data || {};
+  const { episodes } = data || {}
 
-  const next = episodes?.info?.next;
+  const next = episodes?.info?.next
 
   const handleLoadMore = useCallback(() =>
       fetchMore({

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { bgColor, border, bp } from "./variables"
+import { border, bp } from "./variables"
 
 export const SearchBarRoot = styled.div`
   display: flex;
@@ -57,12 +57,8 @@ export const SearchButton = styled.button`
 	}
 `
 
-//!
-export const StatusText = styled.p`
-	text-align: center;
-`
-//!
-export const SearchResultsRoot = styled.div`
-	display: flex;
-	padding: 1rem;
+export const SearchResultsPageTitle = styled.div`
+	width: 100%;
+	text-transform: capitalize;
+	font-size: 2rem;
 `

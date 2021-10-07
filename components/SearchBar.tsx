@@ -1,21 +1,32 @@
+import { useState } from "react"
 import { SearchBarRoot, SearchBarForm, SearchButton } from '../styles/SearchBar'
 import SelectMenu from './SelectMenu'
-import useSearch from './hooks/useSearch'
+import { Query } from "../interface/queries"
+import { useRouter } from "next/dist/client/router"
 
 interface SearchBarProps {
   closeMenu: () => void
 }
 
 const SearchBar = ({ closeMenu }:SearchBarProps) => {
+  const router = useRouter()
 
-  const { 
-    handleSearch, 
-    searchInput, 
-    handleInputChange, 
-    searchType, 
-    setSearchType, 
-    isLoading 
-  } = useSearch(closeMenu)
+	const [searchInput, setSearchInput] = useState<string>("")
+	const [searchType, setSearchType] = useState<Query>("episodes")
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchInput(e.target.value)
+	}
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		if (!searchInput) return
+    
+    closeMenu()
+    router.push(`/search?${searchType}=${searchInput}`)
+    setSearchType("episodes")
+		setSearchInput("")
+  }
 
   return (
     <SearchBarRoot>
@@ -33,7 +44,6 @@ const SearchBar = ({ closeMenu }:SearchBarProps) => {
           /> 
           <SearchButton>Search</SearchButton>
       </SearchBarForm>
-      {isLoading && <p>Loading</p>}
     </SearchBarRoot>
   )
 }

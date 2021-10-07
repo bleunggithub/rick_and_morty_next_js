@@ -5,7 +5,7 @@ import Loader from './Loader'
 
 interface EpisodeCardListProps{
   episodeInfo?: Episode[]
-  nextPage: null | boolean
+  nextPage?: null | boolean
   handleLoadMore?: () => void
   loading?: boolean
   error?: string | null

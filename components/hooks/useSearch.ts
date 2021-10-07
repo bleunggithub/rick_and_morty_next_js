@@ -1,111 +1,84 @@
 import { useState, useEffect } from "react"
-import {
-	ApolloError,
-	useLazyQuery,
-	WatchQueryFetchPolicy,
-} from "@apollo/client"
-import { Episodes, EpisodesDetails } from "../../interface/episodes"
-import { Characters, CharactersDetails } from "../../interface/characters"
-import { Locations, LocationsDetails } from "../../interface/locations"
-import { Query } from "../../interface/queries"
-import { SEARCH_EPISODES_BY_NAME } from "../../GraphQL/episodes"
+import { useQuery } from "@apollo/client"
 import { SEARCH_CHARACTERS_BY_NAME } from "../../GraphQL/characters"
+import { SEARCH_EPISODES_BY_NAME } from "../../GraphQL/episodes"
 import { SEARCH_LOCATIONS_BY_NAME } from "../../GraphQL/locations"
+import { Collection } from "../../interface"
+import { CharactersDetails } from "../../interface/characters"
+import { EpisodesDetails } from "../../interface/episodes"
+import { LocationsDetails } from "../../interface/locations"
+import { Query } from "../../interface/queries"
+import { searchFetchOptions } from "../../lib/apolloClient"
 
-const useSearch = (closeMenu: () => void) => {
-	const [searchInput, setSearchInput] = useState<string>("")
-	const [searchType, setSearchType] = useState<Query>("episodes")
-	//! add load more pages options
+const useSearch = (
+	searchType: Query,
+	searchInput: string | string[] | undefined
+) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
-	const [searchResults, setSearchResults] = useState<
-		null | Episodes | Characters | Locations
-	>(null)
+	const {
+		fetchMore: episodesFetchMore,
+		loading: episodesSearchLoading,
+		data: episodesResults,
+	} = useQuery<EpisodesDetails>(SEARCH_EPISODES_BY_NAME, {
+		...searchFetchOptions(setError, searchInput),
+		skip: searchType !== "episodes",
+	})
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchInput(e.target.value)
+	const {
+		fetchMore: charactersFetchMore,
+		loading: charactersSearchLoading,
+		data: charactersResults,
+	} = useQuery<CharactersDetails>(SEARCH_CHARACTERS_BY_NAME, {
+		...searchFetchOptions(setError, searchInput),
+		skip: searchType !== "characters",
+	})
+
+	const {
+		fetchMore: locationsFetchMore,
+		loading: locationsSearchLoading,
+		data: locationsResults,
+	} = useQuery<LocationsDetails>(SEARCH_LOCATIONS_BY_NAME, {
+		...searchFetchOptions(setError, searchInput),
+		skip: searchType !== "locations",
+	})
+
+	const next =
+		episodesResults?.episodes?.info?.next ||
+		charactersResults?.characters.info.next ||
+		locationsResults?.locations.info.next
+
+	const FetchMoreFnMap: Collection<Query, any> = {
+		episodes: episodesFetchMore,
+		characters: charactersFetchMore,
+		locations: locationsFetchMore,
 	}
 
-	const fetchOptions = {
-		fetchPolicy: "cache-first" as WatchQueryFetchPolicy,
-		nextFetchPolicy: "cache-first" as WatchQueryFetchPolicy,
-		onCompleted: (
-			res: EpisodesDetails | CharactersDetails | LocationsDetails
-		) => console.log(res),
-		onError: (err: ApolloError) => {
-			setSearchResults(null)
-			setError(err.message)
-		},
+	const handleLoadMore = (fetchMore: any) => {
+		fetchMore({
+			variables: {
+				page: next,
+			},
+		})
 	}
 
-	const [
-		searchEpisodesByName,
-		{ loading: episodesSearchLoading, data: episodesResults },
-	] = useLazyQuery<EpisodesDetails>(SEARCH_EPISODES_BY_NAME, fetchOptions)
-
-	const [
-		searchCharactersByName,
-		{ loading: charactersSearchLoading, data: charactersResults },
-	] = useLazyQuery<CharactersDetails>(SEARCH_CHARACTERS_BY_NAME, fetchOptions)
-
-	const [
-		searchLocationsByName,
-		{ loading: locationsSearchLoading, data: locationsResults },
-	] = useLazyQuery<LocationsDetails>(SEARCH_LOCATIONS_BY_NAME, fetchOptions)
-
-	const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		setError(null)
-		if (!searchInput) return
-
-		if (searchType === "episodes") {
-			searchEpisodesByName({
-				variables: {
-					page: 1,
-					filter: {
-						name: searchInput,
-					},
-				},
-			})
-		} else if (searchType === "characters") {
-			searchCharactersByName({
-				variables: {
-					page: 1,
-					filter: {
-						name: searchInput,
-					},
-				},
-			})
-		} else {
-			searchLocationsByName({
-				variables: {
-					page: 1,
-					filter: {
-						name: searchInput,
-					},
-				},
-			})
-		}
-
-		setSearchInput("")
-	}
+	const loadMore = () => handleLoadMore(FetchMoreFnMap[searchType])
 
 	useEffect(() => {
 		episodesSearchLoading || charactersSearchLoading || locationsSearchLoading
 			? setIsLoading(true)
 			: setIsLoading(false)
-	}, [episodesSearchLoading, charactersSearchLoading])
+	}, [episodesSearchLoading, charactersSearchLoading, locationsSearchLoading])
 
 	return {
-		searchInput,
-		searchType,
-		error,
-		searchResults,
-		handleInputChange,
-		setSearchType,
+		next,
+		loadMore,
 		isLoading,
-		handleSearch,
+		error,
+		episodesResults,
+		charactersResults,
+		locationsResults,
 	}
 }
 

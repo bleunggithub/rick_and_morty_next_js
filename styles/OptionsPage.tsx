@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { bgColor, padding, bp } from "./variables"
 import { MainContentContainer } from "./BaseElements"
 import { motion } from "framer-motion"
@@ -29,8 +29,10 @@ export const PopupMainContentContainer = styled(MainContentContainer)`
   padding-bottom: 2rem;
 `
 
-export const OptionPageTitleText = styled.p`
-  margin-top: ${padding.navbar};
+export const OptionPageTitleText = styled.p<{marginTop?:boolean}>`
+  ${props => props.marginTop && css`
+    margin-top: ${padding.navbar};
+  `}
   padding-left: 2rem !important;
   text-transform: capitalize;
   

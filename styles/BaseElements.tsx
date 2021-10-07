@@ -26,7 +26,7 @@ export const FlexRow = styled.div<{
   align-items: ${props => props.alignItems || 'flex-start'};
 	flex-direction: ${props => props.flexDirection || 'row'};
   flex-wrap: ${props => props.wrap || 'nowrap'};
-
+	
   ${props => props.margin && css`
     margin: ${props.margin}
   `}
@@ -42,6 +42,7 @@ export const FlexRow = styled.div<{
   ${props => props.rowGap && css`
     row-gap: ${props.rowGap}
   `}
+
 `
 
 export const MainContentContainer = styled(motion.main)`
