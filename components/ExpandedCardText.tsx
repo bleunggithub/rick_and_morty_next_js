@@ -1,6 +1,7 @@
 import { AlignRightText, ListContainer } from '../styles/Cards'
 import { FlexRow } from "../styles/BaseElements"
 import { Character } from '../interface/characters'
+import Row from './Row'
 import Link from "next/link"
 
 type ExpandedCardTextProps = Pick<Character, "id" | "name" | "gender" | "species" | "status" | "origin" | "location" | "episode">
@@ -11,24 +12,6 @@ interface RowWithLinkProps {
   content: string
 }
 
-type RowProps = Omit<RowWithLinkProps, "url">
-
-const Row = ({ title, content }: RowProps) => {
-  return (
-    <FlexRow padding={!title ? "1rem": "0 1rem"}>
-      {
-        !title ? (
-          <p>#{content}</p>
-        ):(
-          <>
-            <span>{title}</span>
-            <AlignRightText>{content}</AlignRightText>
-          </>
-        )
-      }
-    </FlexRow>
-  )
-}
 
 const RowWithLink = ({ title, url, content }: RowWithLinkProps) => {
   return (
