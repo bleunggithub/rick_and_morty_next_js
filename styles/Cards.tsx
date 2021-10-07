@@ -116,7 +116,7 @@ export const StatusContainer = styled.div`
 /////////////////////////////////////////////////////////////////
 
 
-export const CharacterCardsContainer = styled(motion.ul)`
+export const IdCardsContainer = styled(motion.ul)`
   width: 100%;
   margin-top: 0;
   padding: 0 1rem;
@@ -230,10 +230,10 @@ export const AlignRightText = styled.p`
 	text-transform: capitalize;
 `
 
-export const EpisodeListContainer = styled.div`
+export const ListContainer = styled.div<{height?: string}>`
 	background-color: #00000053;
 	width: 100%;
-	height: 15vh;
+	height: ${props => props.height || '15vh'};
 	overflow: auto;
 	margin-top: 10px;
 	padding: 1rem;
@@ -245,7 +245,7 @@ export const EpisodeListContainer = styled.div`
 	}
 
   @media (min-width: ${bp.md}){
-		height: 35vh;
+		height: ${props => props.height || '35vh'};
 	}
 `
 
@@ -267,7 +267,44 @@ export const LocationCard = styled(motion.li)`
   position: relative;
 	
   @media (min-width: ${bp.md}){
+		min-height: 30vh;
+    width: 30%;
+	}
+
+  @media (min-width: ${bp.xl}){
     width: 30%;
 	  min-height: 45vh;
   }
 `
+
+
+export const ExpandedLocationCardRoot = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background-color: #000000c4;
+	width: 90vw;
+	height: 50vh;
+	z-index: 5;
+	
+  @media (min-width: ${bp.xxs}){
+    height: 40vh;
+  }
+	
+  @media (min-width: ${bp.md}){
+		height: 30vh;
+    width: 40vw;
+  }
+  @media (min-width: ${bp.xl}){
+		height: 40vh;
+    width: 40vw;
+  }
+	
+`
+

@@ -58,10 +58,7 @@ const AvatarCarousel = ({ characters }: AvatarCarouselProps) => {
       <CarouselContentContainer>
         <CarouselContent style={{transform: `translateX(-${currentIndex * 100 / 5}%)`}}>
           {characters.map((character)=>(
-            <Avatar character={character}/>
-          ))}
-          {characters.length < 50 && new Array(50 - characters.length).map(()=>(
-            <div>hi</div>
+            <Avatar character={character} key={character.id} />
           ))}
         </CarouselContent>
       </CarouselContentContainer>

@@ -1,26 +1,23 @@
-import Image from "next/image"
-import { LocationCard, CharacterImageContainer, CharacterTextContainer } from '../styles/Cards'
-import { OutlineText } from "../styles/BaseElements"
 import { Location } from "../interface/locations"
 import { FlexRow } from '../styles/BaseElements'
-import Link from 'next/link'
-import { EpisodeCard, CardNameText, TitleText, DetailText } from '../styles/Cards'
+import { LocationCard, CardNameText, TitleText, DetailText } from '../styles/Cards'
 import AvatarCarousel from './AvatarCarousel'
 
 interface LocationCardSingleProps {
   locationData: Location
+  onClick: React.MouseEventHandler
 }
 
-const LocationCardSingle = ({locationData}: LocationCardSingleProps) => {
+const LocationCardSingle = ({locationData, onClick}: LocationCardSingleProps) => {
   return (
     <LocationCard
       key={locationData.id}
-      layoutId={locationData.id}
+      layoutId={`lo-${locationData.id}`}
       >
         <FlexRow margin="0 0 1rem 0">
-          <Link href={`/locations?id=${locationData.id}`} shallow passHref scroll={false}>
-            <a><CardNameText>#{locationData.id} {locationData.name}</CardNameText></a>
-          </Link>
+            <a onClick={onClick}>
+              <CardNameText>#{locationData.id} {locationData.name}</CardNameText>
+            </a>
         </FlexRow>
 
         <FlexRow margin="0 0 0.8rem 0">

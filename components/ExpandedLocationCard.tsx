@@ -1,19 +1,19 @@
-import { Character, CharacterDetails } from "../interface/characters"
 import { useState } from "react"
 import { useQuery } from "@apollo/client"
+import Link from "next/link"
 import { 
-  ExpandedCharacterCardRoot, 
-  ExpandedCharacterCardContainer, 
-  CrossIconContainer 
+  ExpandedLocationCardRoot, 
+  CrossIconContainer, 
+  AlignRightText,
+  ListContainer
 } from '../styles/Cards'
 import CrossIcon from "./icons/CrossIcon"
 import { FlexRow } from "../styles/BaseElements"
 import Loader from './Loader'
-import ExpandedCardImage from './ExpandedCardImage'
-import ExpandedCardText from './ExpandedCardText'
 import { ExpandedCardProps } from "../interface"
 import { Location, LocationDetails } from "../interface/locations"
 import { GET_LOCATION } from "../GraphQL/locations"
+import AvatarCarousel from "./AvatarCarousel"
 
 
 const ExpandedLocationCard = ({ 
@@ -36,10 +36,7 @@ const ExpandedLocationCard = ({
   const cardData = activeCardData || data?.location
 
   return (
-    <ExpandedCharacterCardRoot>
-      <ExpandedCharacterCardContainer
-        layoutId={activeCardData?.id || ""}
-        >
+    <ExpandedLocationCardRoot layoutId={`lo-${activeCardData?.id}` || ""}>
         <FlexRow flexDirection="column">
           <CrossIconContainer>
             <CrossIcon onClick={() => onClick('/locations', null, null)}/>
@@ -52,21 +49,29 @@ const ExpandedLocationCard = ({
           { error && (<span>An error has occurred: {error}</span>)}
           { cardData && (
             <>
-              {/* <ExpandedCardText
-                id={cardData.id}
-                name={cardData.name}
-                gender={cardData.type}
-                species={cardData.dimension}
-                status={cardData.status}
-                origin={cardData.origin}
-                location={cardData.location}
-                episode={cardData.episode}
-              /> */}
+              <FlexRow padding="1rem">
+                <p>#{cardData.id} {cardData.name}</p>  
+              </FlexRow>
+              <FlexRow padding="0 1rem">
+                <span>Name</span>
+                <AlignRightText>{cardData.name}</AlignRightText>  
+              </FlexRow>
+              <FlexRow padding="0 1rem">
+                <span>Type</span>
+                <AlignRightText>{cardData.type}</AlignRightText>  
+              </FlexRow>
+              <FlexRow padding="0 1rem">
+                <span>Dimension</span>
+                <AlignRightText>{cardData.dimension}</AlignRightText>  
+              </FlexRow>
+              <FlexRow padding="1rem" flexDirection="column">
+                <p>Residents</p>
+                  <AvatarCarousel characters={cardData.residents} />
+              </FlexRow>
             </>
           )}
         </FlexRow>
-      </ExpandedCharacterCardContainer>
-    </ExpandedCharacterCardRoot>
+    </ExpandedLocationCardRoot>
   )
 }
 

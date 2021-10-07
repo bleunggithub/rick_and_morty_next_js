@@ -37,7 +37,7 @@ const ExpandedCharacterCard = ({
   return (
     <ExpandedCharacterCardRoot>
       <ExpandedCharacterCardContainer
-        layoutId={activeCardData?.id || ""}
+        layoutId={`ch-${activeCardData?.id}` || ""}
         >
         <FlexRow flexDirection="column">
           <CrossIconContainer>

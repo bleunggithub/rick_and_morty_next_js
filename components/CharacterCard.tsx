@@ -13,7 +13,7 @@ const CharacterCardSingle = ({characterData, onClick}:CharacterCardSingleProps) 
   return (
     <CharacterCard
       key={characterData.id}
-      layoutId={characterData.id}
+      layoutId={`ch-${characterData.id}`}
       onClick={onClick}
       >
       <CharacterImageContainer>

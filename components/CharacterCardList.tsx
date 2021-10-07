@@ -1,5 +1,5 @@
 import { Character } from "../interface/characters"
-import { CharacterCardsContainer, StatusContainer } from '../styles/Cards'
+import { IdCardsContainer, StatusContainer } from '../styles/Cards'
 import Loader from './Loader'
 import CharacterCard from './CharacterCard'
 import { CardListProps } from "../interface"
@@ -16,7 +16,7 @@ const CharacterCardList = ({
   return (
     <>
     {cardData && (
-      <CharacterCardsContainer>
+      <IdCardsContainer>
         {cardData.map((item) => (
           <CharacterCard
             characterData={item}
@@ -26,7 +26,7 @@ const CharacterCardList = ({
             }
           />
         ))}
-      </CharacterCardsContainer>
+      </IdCardsContainer>
     )}
       <StatusContainer>
         { loading && <Loader />}
