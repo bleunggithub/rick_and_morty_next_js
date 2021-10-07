@@ -32,7 +32,8 @@ export const PopupMainContentContainer = styled(MainContentContainer)`
 export const OptionPageTitleText = styled.p`
   margin-top: ${padding.navbar};
   padding-left: 2rem !important;
-      
+  text-transform: capitalize;
+  
   @media (min-width: ${bp.lg}){
     padding-left: 4rem !important;
   }

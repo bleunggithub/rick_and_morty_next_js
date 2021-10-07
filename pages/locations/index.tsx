@@ -1,27 +1,25 @@
 import { useState, useCallback } from 'react'
 import { useQuery } from '@apollo/client'
-import { GET_CHARACTERS } from '../../GraphQL/characters'
-import { CharactersDetails } from '../../interface/characters'
-import { useRouter } from 'next/dist/client/router'
-import CharacterCardList from '../../components/CharacterCardList'
-import ExpandedCharacterCard from '../../components/ExpandedCharacterCard'
+import LocationCardList from '../../components/LocationCardList'
+import ExpandedLocationCard from '../../components/ExpandedLocationCard'
 import useCards from '../../components/hooks/useCards'
 import PopupList from '../../components/PopupList'
+import { LocationsDetails } from '../../interface/locations'
+import { GET_LOCATIONS } from '../../GraphQL/locations'
+import { Location } from '../../interface/locations'
 
-const CharactersPage = () => {
-  const router = useRouter()
-
-  const { activeId, toggleCard, activeCardData } = useCards(router)
+const LocationsPage = () => {
+  const { activeId, toggleCard, activeCardData } = useCards<Location>()
 
   const [error, setError] = useState<null | string>(null)
 
-  const { loading, fetchMore, data } = useQuery<CharactersDetails>(GET_CHARACTERS, {
+  const { loading, fetchMore, data } = useQuery<LocationsDetails>(GET_LOCATIONS, {
     notifyOnNetworkStatusChange: true,
     onError: err => setError(err.message)
   })
 
-  const { characters } = data || {};
-  const next = characters?.info?.next;
+  const { locations } = data || {};
+  const next = locations?.info?.next;
   
   const handleLoadMore = useCallback(() =>
     fetchMore({
@@ -31,15 +29,16 @@ const CharactersPage = () => {
   )
   
   const closeCard = () => {
-    toggleCard('/characters', null, null)
+    toggleCard('/locations', null, null)
   }
 
   return (
     <PopupList
+      from="locations"
       cardList={
-        <CharacterCardList 
-          key="characterCardList"
-          cardData={characters?.results} 
+        <LocationCardList 
+          key="locationsCardList"
+          cardData={locations?.results} 
           onClick={toggleCard} 
           nextPage={!!next}
           handleLoadMore={handleLoadMore}
@@ -50,8 +49,8 @@ const CharactersPage = () => {
       activeId={activeId}
       onClick={closeCard}
       expandedCard={
-        <ExpandedCharacterCard
-          key="characterCard"
+        <ExpandedLocationCard
+          key="locationCard"
           activeId={activeId}
           activeCardData={activeCardData}
           onClick={closeCard}
@@ -61,7 +60,7 @@ const CharactersPage = () => {
   )
 }
 
-export default CharactersPage
+export default LocationsPage
 
 
 

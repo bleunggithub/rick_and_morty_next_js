@@ -16,7 +16,7 @@ const CharacterCardSingle = ({characterData, onClick}:CharacterCardSingleProps) 
       layoutId={characterData.id}
       onClick={onClick}
       >
-      <CharacterImageContainer layoutId={`image-${characterData.id}`}>
+      <CharacterImageContainer>
         <Image
           src={characterData.image} 
           layout="fill" 

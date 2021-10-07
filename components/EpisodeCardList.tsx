@@ -2,7 +2,8 @@ import { Episode } from '../interface/episodes'
 import { StatusContainer } from '../styles/Cards'
 import EpisodeInfoCard from './EpisodeInfoCard'
 import Loader from './Loader'
-interface EpisodeInfoCardListProps{
+
+interface EpisodeCardListProps{
   episodeInfo?: Episode[]
   nextPage: null | boolean
   handleLoadMore: () => void
@@ -10,13 +11,13 @@ interface EpisodeInfoCardListProps{
   error: string | null
 }
 
-const EpisodeInfoCardList = ({
+const EpisodeCardList = ({
   episodeInfo, 
   nextPage, 
   handleLoadMore, 
   loading, 
   error
-}: EpisodeInfoCardListProps) => {
+}: EpisodeCardListProps) => {
   return (
     <>
       {episodeInfo?.map((episode)=>(
@@ -38,4 +39,4 @@ const EpisodeInfoCardList = ({
   )
 }
 
-export default EpisodeInfoCardList
+export default EpisodeCardList

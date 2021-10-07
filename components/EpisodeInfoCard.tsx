@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Episode } from '../interface/episodes'
-import AvatarList from './AvatarList'
-import { EpisodeCard, EpisodeNameText, TitleText, DetailText } from '../styles/Cards'
+import AvatarCarousel from './AvatarCarousel'
+import { EpisodeCard, CardNameText, TitleText, DetailText } from '../styles/Cards'
 import { FlexRow } from '../styles/BaseElements'
 import { parseEpisodeSeasons } from '../helpers/episodes'
 
@@ -16,7 +16,7 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
       <EpisodeCard>
         <FlexRow margin="0 0 1rem 0">
           <Link href={`/episodes/${episode.id}`} passHref scroll={false}>
-            <a><EpisodeNameText>#{episode.id} {episode.name}</EpisodeNameText></a>
+            <a><CardNameText>#{episode.id} {episode.name}</CardNameText></a>
           </Link>
         </FlexRow>
 
@@ -30,7 +30,7 @@ const EpisodeInfoCard = ({ episode }: EpisodeInfoCardProps) => {
         </FlexRow>
         
         <TitleText fullWidth>Characters</TitleText>
-        <AvatarList characters={episode.characters.slice(0,6)} />
+        <AvatarCarousel characters={episode.characters} />
       </EpisodeCard>
     </>
   )

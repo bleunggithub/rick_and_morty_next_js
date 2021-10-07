@@ -1,17 +1,14 @@
 import { useState, useCallback } from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_CHARACTERS } from '../../GraphQL/characters'
-import { CharactersDetails } from '../../interface/characters'
-import { useRouter } from 'next/dist/client/router'
+import { Character, CharactersDetails } from '../../interface/characters'
 import CharacterCardList from '../../components/CharacterCardList'
 import ExpandedCharacterCard from '../../components/ExpandedCharacterCard'
 import useCards from '../../components/hooks/useCards'
 import PopupList from '../../components/PopupList'
 
 const CharactersPage = () => {
-  const router = useRouter()
-
-  const { activeId, toggleCard, activeCardData } = useCards(router)
+  const { activeId, toggleCard, activeCardData } = useCards<Character>()
 
   const [error, setError] = useState<null | string>(null)
 
@@ -36,6 +33,7 @@ const CharactersPage = () => {
 
   return (
     <PopupList
+      from="characters"
       cardList={
         <CharacterCardList 
           key="characterCardList"

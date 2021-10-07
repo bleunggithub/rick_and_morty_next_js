@@ -72,9 +72,9 @@ export const EpisodeCard = styled.div`
 	}
 `
 
-export const EpisodeNameText = styled(OutlineText)`
+export const CardNameText = styled(OutlineText)`
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.7rem;
 	letter-spacing: 2px;
 	:hover {
 		font-weight: 600;
@@ -87,10 +87,12 @@ export const TitleText = styled.p<{fullWidth?: boolean}>`
 	${props => props.fullWidth && css`
 		width: 100%;
 	`}
+	margin-right: 1rem;
 `
 
 export const DetailText = styled.p`
 	color: #ffffffad;
+	text-align: right;
 `
 
 export const StatusContainer = styled.div`
@@ -183,10 +185,17 @@ export const ExpandedCharacterCardRoot = styled.div`
     height: 80vh;
   }
 	
+  @media (min-width: ${bp.xl}){
+    width: 60vw;
+  }
+	
 	>div>div {
 			@media (min-width: ${bp.md}){
+				height: 80vh;
+				display: flex;
 				flex-wrap: nowrap;
 				flex-direction: row;
+				align-items: center;
 			}
 			>div:last-child{
 				width: 100%;
@@ -244,4 +253,21 @@ export const ExpandedCharacterCardContainer = styled(motion.div)`
   border-radius: 10px;
   width: 100vw;
   height: 300px;
+`
+////////////////////////////////////////////////////////////////
+export const LocationCard = styled(motion.li)`
+  display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+  border-radius: 2px;
+  width: 100%;
+  background-color: #0000002a;
+  min-height: 30vh;
+	padding: 1rem;
+  position: relative;
+	
+  @media (min-width: ${bp.md}){
+    width: 30%;
+	  min-height: 45vh;
+  }
 `

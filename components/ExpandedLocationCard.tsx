@@ -6,24 +6,25 @@ import {
   ExpandedCharacterCardContainer, 
   CrossIconContainer 
 } from '../styles/Cards'
-import { GET_CHARACTER } from "../GraphQL/characters"
 import CrossIcon from "./icons/CrossIcon"
 import { FlexRow } from "../styles/BaseElements"
 import Loader from './Loader'
 import ExpandedCardImage from './ExpandedCardImage'
 import ExpandedCardText from './ExpandedCardText'
 import { ExpandedCardProps } from "../interface"
+import { Location, LocationDetails } from "../interface/locations"
+import { GET_LOCATION } from "../GraphQL/locations"
 
 
-const ExpandedCharacterCard = ({ 
+const ExpandedLocationCard = ({ 
   activeId, 
   activeCardData, 
   onClick
-}: ExpandedCardProps<Character>) => {
+}: ExpandedCardProps<Location>) => {
   const [error, setError] = useState<null | string>(null)
 
-  const { loading, data } = useQuery<CharacterDetails>(
-    GET_CHARACTER, {
+  const { loading, data } = useQuery<LocationDetails>(
+    GET_LOCATION, {
       skip: !!activeCardData,
       notifyOnNetworkStatusChange: true, 
       variables: {
@@ -32,7 +33,7 @@ const ExpandedCharacterCard = ({
       onError: err => setError(err.message)
     })
 
-  const cardData = activeCardData || data?.character
+  const cardData = activeCardData || data?.location
 
   return (
     <ExpandedCharacterCardRoot>
@@ -41,7 +42,7 @@ const ExpandedCharacterCard = ({
         >
         <FlexRow flexDirection="column">
           <CrossIconContainer>
-            <CrossIcon onClick={() => onClick('/characters', null, null)}/>
+            <CrossIcon onClick={() => onClick('/locations', null, null)}/>
           </CrossIconContainer>
           { loading && (
             <FlexRow justifyContent="center" alignItems="center" margin="10vh auto">
@@ -51,19 +52,16 @@ const ExpandedCharacterCard = ({
           { error && (<span>An error has occurred: {error}</span>)}
           { cardData && (
             <>
-              <ExpandedCardImage
-                image={cardData.image}
-              />
-              <ExpandedCardText
+              {/* <ExpandedCardText
                 id={cardData.id}
                 name={cardData.name}
-                gender={cardData.gender}
-                species={cardData.species}
+                gender={cardData.type}
+                species={cardData.dimension}
                 status={cardData.status}
                 origin={cardData.origin}
                 location={cardData.location}
                 episode={cardData.episode}
-              />
+              /> */}
             </>
           )}
         </FlexRow>
@@ -72,4 +70,4 @@ const ExpandedCharacterCard = ({
   )
 }
 
-export default ExpandedCharacterCard
+export default ExpandedLocationCard

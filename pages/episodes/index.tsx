@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { useQuery } from '@apollo/client'
 import { animationProps } from '../../animations/defaultValues'
 import { contentVariants } from '../../animations/variants'
-import EpisodeInfoCardList from '../../components/EpisodeInfoCardList'
+import EpisodeCardList from '../../components/EpisodeCardList'
 import { GET_EPISODES } from '../../GraphQL/episodes'
 import { EpisodesDetails } from '../../interface/episodes'
 import { OptionsMainContentContainer } from '../../styles/OptionsPage'
@@ -34,7 +34,7 @@ const EpisodesPage = () => {
         {...animationProps}
       >
         <p>Episodes</p>
-        <EpisodeInfoCardList 
+        <EpisodeCardList 
           episodeInfo={episodes?.results}
           nextPage={!!next}
           handleLoadMore={handleLoadMore}

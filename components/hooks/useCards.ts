@@ -1,28 +1,26 @@
-import { NextRouter } from "next/dist/client/router"
+import { useRouter } from "next/dist/client/router"
 import { useState, useEffect } from "react"
-import { Character } from "../../interface/characters"
 
-const useCards = (router: NextRouter) => {
+const useCards = <T>() => {
+	const router = useRouter()
+
 	const [activeId, setActiveId] = useState<null | string>(null)
-	const [activeCardData, setActiveCardData] = useState<null | Character>(null)
+	const [activeCardData, setActiveCardData] = useState<null | T>(null)
 
-	const toggleCard = (
-		route: string,
-		cardData: Character | null,
-		id: string | null
-	) => {
+	const toggleCard = (route: string, cardData: T | null, id: string | null) => {
 		router.push(route, route, { shallow: true })
 		setActiveCardData(cardData)
 		setActiveId(id)
 	}
 
 	useEffect(() => {
-		router.query.id &&
-			setActiveId(
-				typeof router.query.id === "string"
-					? router.query.id
-					: router.query.id[0]
-			)
+		router.query.id
+			? setActiveId(
+					typeof router.query.id === "string"
+						? router.query.id
+						: router.query.id[0]
+			  )
+			: setActiveId(null)
 	}, [router.query.id])
 
 	return {
