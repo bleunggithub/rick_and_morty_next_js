@@ -7,7 +7,6 @@ export const HomeRoot = styled.div`
 `
 
 export const MainContentContainer = styled.div`
-
 	padding: ${padding.navbar} ${padding.smX};
 
 	@media (min-width: ${bp.lg}){

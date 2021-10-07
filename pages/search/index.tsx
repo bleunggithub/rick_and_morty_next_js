@@ -1,10 +1,9 @@
 import { useRouter } from "next/dist/client/router"
 import Loader from "../../components/Loader"
-import { PopupMainContentContainer, OptionsMainContentContainer } from '../../styles/OptionsPage'
+import { OptionsMainContentContainer } from '../../styles/OptionsPage'
 import { SearchResultsPageTitle } from '../../styles/SearchBar'
 import { animationProps } from '../../animations/defaultValues'
 import { contentVariants } from '../../animations/variants'
-import { FlexRow } from "../../styles/BaseElements"
 import { Query } from "../../interface/queries"
 import useSearch from "../../components/hooks/useSearch"
 import EpisodeCardList from "../../components/EpisodeCardList"
@@ -12,7 +11,6 @@ import PopupList from "../../components/PopupList"
 import { StatusContainer } from "../../styles/Cards"
 import LocationCardList from '../../components/LocationCardList'
 import CharacterCardList from '../../components/CharacterCardList'
-import ExpandedLocationCard from '../../components/ExpandedLocationCard'
 import useCards from "../../components/hooks/useCards"
 import { Location } from '../../interface/locations'
 import { Character } from "../../interface/characters"

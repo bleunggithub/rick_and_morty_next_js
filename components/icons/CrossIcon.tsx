@@ -1,5 +1,3 @@
-import * as React from "react"
-
 interface CrossIconProp {
   height?: string
 	width?: string

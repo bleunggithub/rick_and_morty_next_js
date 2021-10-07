@@ -1,4 +1,3 @@
-
 interface AngleRightProp {
   height?: string
   fill?: string
