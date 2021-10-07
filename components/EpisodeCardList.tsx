@@ -6,9 +6,9 @@ import Loader from './Loader'
 interface EpisodeCardListProps{
   episodeInfo?: Episode[]
   nextPage: null | boolean
-  handleLoadMore: () => void
-  loading: boolean
-  error: string | null
+  handleLoadMore?: () => void
+  loading?: boolean
+  error?: string | null
 }
 
 const EpisodeCardList = ({
