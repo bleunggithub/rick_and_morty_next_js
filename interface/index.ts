@@ -1,6 +1,3 @@
-import { Character } from "./characters"
-import { Location } from "./locations"
-
 export type Collection<Keys extends string, Type> = {
 	[Key in Keys]?: Type
 }
