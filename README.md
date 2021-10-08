@@ -1,6 +1,8 @@
 ## Table of Content
 deployed on Vercel - [https://rick-and-morty-next-js-phi.vercel.app/](https://rick-and-morty-next-js-phi.vercel.app/)
 
+<img src="https://github.com/bleunggithub/rick_and_morty_next_js/blob/main/Screenshot%202021-10-08%20at%2012.29.49%20PM.png" width="600"/>
+
 - [Installation](#installation)
 - [Main Features](#main-features)
 
